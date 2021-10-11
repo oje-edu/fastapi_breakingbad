@@ -1,10 +1,10 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
-from config.database import Base
+import database  as _database
 
 
-class Season(Base):
+class Season(_database.Base):
     __tablename__ = "seasons"
 
     season_id = Column(Integer, primary_key=True)
@@ -16,7 +16,7 @@ class Season(Base):
     episodes = relationship("Episode", back_populates="season")
 
 
-class Episode(Base):
+class Episode(_database.Base):
     __tablename__ = "episodes"
 
     episode_id = Column(Integer, primary_key=True)
