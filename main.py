@@ -5,10 +5,10 @@ from typing import List
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-import app.crud as crud
-import app.models as models
-import app.schemas as schemas
-from app.database import SessionLocal, engine
+import data.crud as crud
+import data.models as models
+import data.schemas as schemas
+from config.database import SessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine)
 
