@@ -18,10 +18,12 @@ _models._database.Base.metadata.create_all(bind=engine)
 description = """
 This is a german Breaking Bad API. 🚀
 ## In development
-Coming soon:
-* **Read **.
-* **Read**.
-* **Read**.
+Works:
+* **Read all Seasons**.
+* **Read all Seasons and Read Season by ID**.
+* **Read all Episodes**.
+* **Read all Actors (without DOB) and Characters**.
+* **Read all Actors (without DOB) and Characters by ID**.
 """
 
 tags_metadata = [
@@ -34,8 +36,8 @@ tags_metadata = [
         "description": "Shows the Episodes.",
     },
     {
-        "name": "Characters",
-        "description": "Shows the characters and Actors.",
+        "name": "Actors",
+        "description": "Shows the Actors and the Characters.",
         # "externalDocs": {
         #     "description": "Items external docs",
         #     "url": "https://fastapi.tiangolo.com/",
@@ -75,7 +77,7 @@ def get_seasons(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 
 @app.get("/seasons/{season_id}", response_model=_schemas.Season,tags=["Seasons"])
-def get_season(season_id: int, db: Session = Depends(get_db)):
+def get_season_by_id(season_id: int, db: Session = Depends(get_db)):
     db_season = _crud.get_season(db, season_id=season_id)
     if db_season is None:
         raise HTTPException(status_code=404, detail="Season not found")
@@ -86,6 +88,18 @@ def get_season(season_id: int, db: Session = Depends(get_db)):
 def get_episodes(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     episodes = _crud.get_episodes(db, skip=skip, limit=limit)
     return episodes
+
+@app.get("/actors/", response_model=List[_schemas.Actor_Wob], tags=["Actors"])
+def get_actors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    actors = _crud.get_actors(db, skip=skip, limit=limit)
+    return actors
+
+@app.get("/actors/{actor_id}", response_model=_schemas.Actor,tags=["Actors"])
+def get_actor_by_id(actor_id: int, db: Session = Depends(get_db)):
+    db_actor = _crud.get_actor(db, actor_id=actor_id)
+    if db_actor is None:
+        raise HTTPException(status_code=404, detail="Actor not found")
+    return db_actor
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host=os.environ.get("UV_HOST", "localhost"),  port=os.environ.get("UV_PORT", 8003),)

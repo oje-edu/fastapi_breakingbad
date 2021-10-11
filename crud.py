@@ -7,6 +7,9 @@ import schemas as _schemas
 def get_season(db: Session, season_id: int):
     return db.query(_models.Season).filter(_models.Season.season_id == season_id).first()
 
+def get_actor(db: Session, actor_id: int):
+    return db.query(_models.Actor).filter(_models.Actor.actor_id == actor_id).first()
+
 
 # def get_user_by_email(db: Session, email: str):
 #     return db.query(models.User).filter(models.User.email == email).first()
@@ -14,6 +17,9 @@ def get_season(db: Session, season_id: int):
 
 def get_seasons(db: Session, skip: int = 0, limit: int = 100):
     return db.query(_models.Season).offset(skip).limit(limit).all()
+
+def get_actors(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(_models.Actor).offset(skip).limit(limit).all()
 
 
 # def create_user(db: Session, user: schemas.UserCreate):
