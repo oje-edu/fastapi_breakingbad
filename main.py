@@ -43,4 +43,4 @@ def get_episodes(skip: int = 0, limit: int = 100, db: Session = Depends(get_db))
     return episodes
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host=os.environ.get("UV_HOST", "localhost"),  port=os.environ.get("UV_PORT", 8003),)
+    uvicorn.run(app, host=os.environ.get("UV_HOST", "localhost"),  port=os.environ.get("UV_PORT", 8003),)
