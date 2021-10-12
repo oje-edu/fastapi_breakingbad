@@ -40,13 +40,13 @@ class Actor(_database.Base):
 
     characters = relationship("Character", back_populates="actor")
 
-# class Status(_database.Base):
-#     __tablename__ = "statuses"
+class Status(_database.Base):
+    __tablename__ = "statuses"
 
-#     status_id = Column(Integer, primary_key=True)
-#     status_name = Column(String)
+    status_id = Column(Integer, primary_key=True)
+    status_name = Column(String)
 
-#     characters = relationship("Character", back_populates="statuses")
+    characters = relationship("Character", back_populates="status")
 
 class Character(_database.Base):
     __tablename__ = "characters"
@@ -57,8 +57,8 @@ class Character(_database.Base):
     aliasname = Column(String)
     image = Column(String)
 
-    # status_id=Column(Integer,ForeignKey("statuses.status_id"))
-    # status = relationship("Status", back_populates="statuses")
+    status_id=Column(Integer,ForeignKey("statuses.status_id"))
+    status = relationship("Status", back_populates="characters")
 
     actor_id = Column(Integer, ForeignKey("actors.actor_id"))
     actor = relationship("Actor", back_populates="characters")

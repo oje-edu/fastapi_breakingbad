@@ -7,6 +7,9 @@ import schemas as _schemas
 def get_season(db: Session, season_id: int):
     return db.query(_models.Season).filter(_models.Season.season_id == season_id).first()
 
+def get_episode(db: Session, episode_id: int):
+    return db.query(_models.Episode).filter(_models.Episode.episode_id == episode_id).first()
+
 def get_actor(db: Session, actor_id: int):
     return db.query(_models.Actor).filter(_models.Actor.actor_id == actor_id).first()
 

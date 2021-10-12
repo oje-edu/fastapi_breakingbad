@@ -20,10 +20,11 @@ This is a german Breaking Bad API. 🚀
 ## In development
 Works:
 * **Read all Seasons**.
-* **Read all Seasons and Read Season by ID**.
+* **Read Season by ID**.
 * **Read all Episodes**.
+* **Read Episode by ID**.
 * **Read all Actors (without DOB) and Characters**.
-* **Read all Actors (without DOB) and Characters by ID**.
+* **Read Actor (without DOB) and Character by ID**.
 """
 
 tags_metadata = [
@@ -89,10 +90,20 @@ def get_episodes(skip: int = 0, limit: int = 100, db: Session = Depends(get_db))
     episodes = _crud.get_episodes(db, skip=skip, limit=limit)
     return episodes
 
+
+@app.get("/episodes/{episode_id}", response_model=_schemas.Episode,tags=["Episodes"])
+def get_episode_by_id(episode_id: int, db: Session = Depends(get_db)):
+    db_episode = _crud.get_episode(db, episode_id=episode_id)
+    if db_episode is None:
+        raise HTTPException(status_code=404, detail="Episode not found")
+    return db_episode
+
+
 @app.get("/actors/", response_model=List[_schemas.Actor_Wob], tags=["Actors"])
 def get_actors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     actors = _crud.get_actors(db, skip=skip, limit=limit)
     return actors
+
 
 @app.get("/actors/{actor_id}", response_model=_schemas.Actor,tags=["Actors"])
 def get_actor_by_id(actor_id: int, db: Session = Depends(get_db)):

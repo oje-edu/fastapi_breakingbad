@@ -10,11 +10,6 @@ class EpisodeBase(BaseModel):
     plot: Optional[str] = None
     image: Optional[str] = None
 
-
-class EpisodeCreate(EpisodeBase):
-    pass
-
-
 class Episode(EpisodeBase):
     episode_id: int
     season_id: int
@@ -22,14 +17,8 @@ class Episode(EpisodeBase):
     class Config:
         orm_mode = True
 
-
 class SeasonBase(BaseModel):
     season_id: int
-
-
-class SeasonCreate(SeasonBase):
-    pass
-
 
 class Season(SeasonBase):
     season_id: int
@@ -42,17 +31,15 @@ class Season(SeasonBase):
     class Config:
         orm_mode = True
 
-# class StatusBase(BaseModel):
-#     status_id: int
-#     status_name: str
+class StatusBase(BaseModel):
+    status_id: int
+
+class Status(StatusBase):
+    status_name: str
 
 
-# class Status(StatusBase):
-#     status_id: int
-
-#     class Config:
-#         orm_mode = True
-
+    class Config:
+        orm_mode = True
 class CharacterBase(BaseModel):
     character_id: int
     firstname: str
@@ -63,6 +50,7 @@ class CharacterBase(BaseModel):
 class Character(CharacterBase):
     character_id: int
     actor_id: int
+    status_id: int
 
     class Config:
         orm_mode = True
@@ -78,6 +66,7 @@ class Actor(ActorBase):
     image: str
     url: str
     characters: List[Character] = []
+
 class Actor_Wob(ActorBase):
     actor_id: int
     firstname: str
