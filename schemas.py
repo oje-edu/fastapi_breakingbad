@@ -35,8 +35,17 @@ class StatusBase(BaseModel):
     status_id: int
 
 class Status(StatusBase):
+    status_id: int
     status_name: str
 
+    class Config:
+        orm_mode = True
+
+class JobBase(BaseModel):
+    job_id: int
+
+class Job(JobBase):
+    jobname: str
 
     class Config:
         orm_mode = True
@@ -46,11 +55,13 @@ class CharacterBase(BaseModel):
     lastname: str
     aliasname: str
     image: Optional[str] = None
+    status: Optional[Status] = None
 
 class Character(CharacterBase):
     character_id: int
-    actor_id: int
-    status_id: int
+    # actor_id: int
+    # status_id: int
+    # job_id: int
 
     class Config:
         orm_mode = True
@@ -62,12 +73,13 @@ class Actor(ActorBase):
     actor_id: int
     firstname: str
     lastname: str
-    birthday: date
+    # birthday: date
     image: str
     url: str
-    characters: List[Character] = []
+    class Config:
+        orm_mode = True
 
-class Actor_Wob(ActorBase):
+class ActorChar(ActorBase):
     actor_id: int
     firstname: str
     lastname: str
@@ -77,3 +89,13 @@ class Actor_Wob(ActorBase):
 
     class Config:
         orm_mode = True
+class ActorSingle(ActorBase):
+    actor_id: int
+    firstname: str
+    lastname: str
+    image: str
+    url: str
+    class Config:
+        orm_mode = True
+
+

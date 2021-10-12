@@ -48,6 +48,15 @@ class Status(_database.Base):
 
     characters = relationship("Character", back_populates="status")
 
+class Job(_database.Base):
+    __tablename__ = "jobs"
+
+    job_id = Column(Integer, primary_key=True)
+    jobname = Column(String)
+    jobdesc = Column(Text)
+
+    characters = relationship("Character", secondary="characters_jobs", back_populates="jobs")
+
 class Character(_database.Base):
     __tablename__ = "characters"
 
@@ -62,4 +71,13 @@ class Character(_database.Base):
 
     actor_id = Column(Integer, ForeignKey("actors.actor_id"))
     actor = relationship("Actor", back_populates="characters")
+
+    jobs = relationship('Job', secondary="characters_jobs", back_populates="characters")
+
+class CharJob(_database.Base):
+    __tablename__ = "characters_jobs"
+
+    cj_id = Column(Integer, primary_key=True, index=True)
+    cj_character = Column(Integer, ForeignKey('characters.character_id'), primary_key=True)
+    cj_job = Column(Integer, ForeignKey('jobs.job_id'), primary_key=True)
 
