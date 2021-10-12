@@ -12,7 +12,7 @@ _IN DEVELOPMENT_
   - `source .venv/bin/activate`
 - Windows
   - `python -m venv .venv`
-  - `source .venv\Scripts\activate
+  - `source .venv\Scripts\activate`
 - `pip install -r requirements.txt`
 - rename the `.env-sample` file to `.env` and enter your Databasedetails
 
@@ -47,7 +47,14 @@ ExecStart=/home/losername/fastapi_breakingbad/.venv/bin/gunicorn -b 127.0.0.1:80
 WantedBy=multi-user.target
 ```
 
-- Starting the service
-  sudo systemctl start fastapi-breakingbad.service --now
-  sudo systemctl stop fastapi-breakingbad.service
-  sudo systemctl status fastapi-breakingbad.service
+- Start the service
+
+  `sudo systemctl start fastapi-breakingbad.service --now`
+
+- Stop the service
+
+  `sudo systemctl stop fastapi-breakingbad.service`
+
+- Check the service
+
+  `sudo systemctl status fastapi-breakingbad.service`
