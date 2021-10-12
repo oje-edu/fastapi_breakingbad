@@ -4,6 +4,11 @@
 
 _IN DEVELOPMENT_
 
+## Requirements
+
+- python3
+- mysql/mariadb
+
 ## Install
 
 - `git clone` this repo
