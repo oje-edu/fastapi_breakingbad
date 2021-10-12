@@ -45,10 +45,12 @@ class JobBase(BaseModel):
     job_id: int
 
 class Job(JobBase):
-    jobname: str
+    jobname: Optional[str] = None
+    jobdesc: Optional[str] = None
 
     class Config:
         orm_mode = True
+
 class CharacterBase(BaseModel):
     character_id: int
     firstname: str
@@ -62,6 +64,7 @@ class Character(CharacterBase):
     # actor_id: int
     # status_id: int
     # job_id: int
+    jobs: List[Job] = []
 
     class Config:
         orm_mode = True
@@ -89,6 +92,7 @@ class ActorChar(ActorBase):
 
     class Config:
         orm_mode = True
+
 class ActorSingle(ActorBase):
     actor_id: int
     firstname: str
@@ -97,5 +101,3 @@ class ActorSingle(ActorBase):
     url: str
     class Config:
         orm_mode = True
-
-

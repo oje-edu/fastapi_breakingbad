@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text
+from sqlalchemy import Column, ForeignKey, Integer, String, Text
 from sqlalchemy.types import Date
 from sqlalchemy.orm import relationship
 
@@ -16,7 +16,6 @@ class Season(_database.Base):
 
     episodes = relationship("Episode", back_populates="season")
 
-
 class Episode(_database.Base):
     __tablename__ = "episodes"
 
@@ -28,6 +27,7 @@ class Episode(_database.Base):
     season_id = Column(Integer, ForeignKey("seasons.season_id"))
 
     season = relationship("Season", back_populates="episodes")
+
 class Actor(_database.Base):
     __tablename__ = "actors"
 
@@ -80,4 +80,3 @@ class CharJob(_database.Base):
     cj_id = Column(Integer, primary_key=True, index=True)
     cj_character = Column(Integer, ForeignKey('characters.character_id'), primary_key=True)
     cj_job = Column(Integer, ForeignKey('jobs.job_id'), primary_key=True)
-

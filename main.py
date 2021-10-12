@@ -23,8 +23,14 @@ Works:
 * **Read Season by ID**.
 * **Read all Episodes**.
 * **Read Episode by ID**.
-* **Read all Actors (without DOB) and Characters**.
+* **Read all Actors**.
 * **Read Actor (without DOB) and Character by ID**.
+* **Read all Actors (without DOB) and Characters**.
+* **Read Characters**.
+* **Read Character by ID**.
+* **Read all Jobs**.
+
+©2021 - oje-edu
 """
 
 tags_metadata = [
@@ -44,16 +50,20 @@ tags_metadata = [
         #     "url": "https://fastapi.tiangolo.com/",
         # },
     },
+    {
+        "name": "Characters",
+        "description": "Shows the Characters.",
+    },
 ]
 
 app = FastAPI(
     title="Breaking Bad API in german Language",
     description=description,
     openapi_tags=tags_metadata,
-    version="0.0.1",
+    version="0.1.0",
     contact={
-        "name": "The Noconcept Dev",
-        "url": "https://the.noconcept.dev",
+        "name": "oje-edu",
+        "url": "https://github.com/oje-edu/fastapi_breakingbad",
         "email": "the@noconcept.dev",
     },
     license_info={
@@ -99,11 +109,6 @@ def get_episode_by_id(episode_id: int, db: Session = Depends(get_db)):
     return db_episode
 
 
-@app.get("/actors/chars", response_model=List[_schemas.ActorChar], tags=["Actors"])
-def get_actors_and_chars(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    actors = _crud.get_actors_chars(db, skip=skip, limit=limit)
-    return actors
-
 @app.get("/actors/", response_model=List[_schemas.ActorSingle], tags=["Actors"])
 def get_actors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     actors = _crud.get_actors(db, skip=skip, limit=limit)
@@ -117,22 +122,32 @@ def get_actor_by_id(actor_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Actor not found")
     return db_actor
 
-@app.get("/characters/{character_id}", response_model=_schemas.Character,tags=["Actors"])
+
+@app.get("/actors/chars", response_model=List[_schemas.ActorChar], tags=["Actors"])
+def get_actors_and_chars(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    actors = _crud.get_actors_chars(db, skip=skip, limit=limit)
+    return actors
+
+
+@app.get("/characters/{character_id}", response_model=_schemas.Character,tags=["Characters"])
 def get_character_by_id(character_id: int, db: Session = Depends(get_db)):
     db_character = _crud.get_character(db, character_id=character_id)
     if db_character is None:
         raise HTTPException(status_code=404, detail="Character not found")
     return db_character
 
-@app.get("/characters/", response_model=List[_schemas.Character], tags=["Actors"])
+
+@app.get("/characters/", response_model=List[_schemas.Character], tags=["Characters"])
 def get_characters(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     characters = _crud.get_characters(db, skip=skip, limit=limit)
     return characters
 
-# @app.get("/jobs/", response_model=List[_schemas.Job], tags=["Actors"])
-# def get_jobs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-#     jobs = _crud.get_jobs(db, skip=skip, limit=limit)
-#     return jobs
+
+@app.get("/jobs/", response_model=List[_schemas.Job], tags=["Characters"])
+def get_jobs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    jobs = _crud.get_jobs(db, skip=skip, limit=limit)
+    return jobs
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host=os.environ.get("UV_HOST", "localhost"),  port=os.environ.get("UV_PORT", 8003),)
