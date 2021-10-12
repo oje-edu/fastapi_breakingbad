@@ -20,6 +20,15 @@ class Episode(EpisodeBase):
 class SeasonBase(BaseModel):
     season_id: int
 
+class SeasonList(SeasonBase):
+    season_id: int
+    title: str
+    plot: str
+    image: str
+    year: str
+
+    class Config:
+        orm_mode = True
 class Season(SeasonBase):
     season_id: int
     title: str

@@ -20,13 +20,13 @@ This is a german Breaking Bad API. 🚀
 ## In development
 Works:
 * **Read all Seasons**.
-* **Read Season by ID**.
+* **Read all Episodes by Season**.
 * **Read all Episodes**.
 * **Read Episode by ID**.
 * **Read all Actors**.
 * **Read Actor (without DOB) and Character by ID**.
 * **Read all Actors (without DOB) and Characters**.
-* **Read Characters**.
+* **Read all Characters**.
 * **Read Character by ID**.
 * **Read all Jobs**.
 
@@ -81,14 +81,14 @@ def get_db():
         db.close()
 
 
-@app.get("/seasons/", response_model=List[_schemas.Season], tags=["Seasons"])
+@app.get("/seasons/", response_model=List[_schemas.SeasonList], tags=["Seasons"])
 def get_seasons(skip: int = 0, limit: int = 5, db: Session = Depends(get_db)):
     seasons = _crud.get_seasons(db, skip=skip, limit=limit)
     return seasons
 
 
-@app.get("/seasons/{season_id}", response_model=_schemas.Season,tags=["Seasons"])
-def get_season_by_id(season_id: int, db: Session = Depends(get_db)):
+@app.get("/episodes/{season_id}", response_model=_schemas.Season,tags=["Episodes"])
+def get_episodes_by_season(season_id: int, db: Session = Depends(get_db)):
     db_season = _crud.get_season(db, season_id=season_id)
     if db_season is None:
         raise HTTPException(status_code=404, detail="Season not found")
@@ -129,18 +129,18 @@ def get_actors_and_chars(skip: int = 0, limit: int = 100, db: Session = Depends(
     return actors
 
 
+@app.get("/characters/", response_model=List[_schemas.Character], tags=["Characters"])
+def get_characters(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    characters = _crud.get_characters(db, skip=skip, limit=limit)
+    return characters
+
+
 @app.get("/characters/{character_id}", response_model=_schemas.Character,tags=["Characters"])
 def get_character_by_id(character_id: int, db: Session = Depends(get_db)):
     db_character = _crud.get_character(db, character_id=character_id)
     if db_character is None:
         raise HTTPException(status_code=404, detail="Character not found")
     return db_character
-
-
-@app.get("/characters/", response_model=List[_schemas.Character], tags=["Characters"])
-def get_characters(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    characters = _crud.get_characters(db, skip=skip, limit=limit)
-    return characters
 
 
 @app.get("/jobs/", response_model=List[_schemas.Job], tags=["Characters"])
