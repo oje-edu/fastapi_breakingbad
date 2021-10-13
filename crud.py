@@ -18,10 +18,10 @@ def get_character(db: Session, character_id: int):
 def get_character_name(db: Session, firstname: str, lastname: str):
     query = db.query(_models.Character)
     if firstname:
-        query = query.filter(_models.Character.firstname == firstname).first()
+        name = query.filter(_models.Character.firstname.contains(firstname))
     if lastname:
-        query = query.filter(_models.Character.lastname == lastname).first()
-    return query
+       name = query.filter(_models.Character.lastname.contains(lastname))
+    return name
 
 def get_seasons(db: Session, skip: int = 0, limit: int = 100):
     return db.query(_models.Season).offset(skip).limit(limit).all()
