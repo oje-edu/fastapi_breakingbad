@@ -6,9 +6,15 @@ from pydantic import BaseModel
 
 class EpisodeBase(BaseModel):
     episode_id: int
+
+class EpisodeList(EpisodeBase):
+    episode_id: int
     title: str
     plot: Optional[str] = None
     image: Optional[str] = None
+
+    class Config:
+        orm_mode = True
 
 class Episode(EpisodeBase):
     episode_id: int
@@ -35,7 +41,7 @@ class Season(SeasonBase):
     plot: str
     image: str
     year: str
-    episodes: List[Episode] = []
+    episodes: List[EpisodeList] = []
 
     class Config:
         orm_mode = True
@@ -46,6 +52,15 @@ class StatusBase(BaseModel):
 class Status(StatusBase):
     status_id: int
     status_name: str
+
+    class Config:
+        orm_mode = True
+
+class FamilyBase(BaseModel):
+    family_id: int
+
+class Family(FamilyBase):
+    family_name: Optional[str] = None
 
     class Config:
         orm_mode = True
@@ -73,6 +88,7 @@ class Character(CharacterBase):
     # actor_id: int
     # status_id: int
     # job_id: int
+    families: List[Family] = []
     jobs: List[Job] = []
 
     class Config:

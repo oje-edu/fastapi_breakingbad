@@ -1,9 +1,10 @@
 from dotenv import load_dotenv
 import uvicorn
 import os
-from typing import List
+from typing import List, Optional
 
 from fastapi import Depends, FastAPI, HTTPException
+
 from sqlalchemy.orm import Session
 
 import crud as _crud
@@ -95,13 +96,13 @@ def get_episodes_by_season(season_id: int, db: Session = Depends(get_db)):
     return db_season
 
 
-@app.get("/episodes/", response_model=List[_schemas.Episode],tags=["Episodes"])
+@app.get("/episodes/", response_model=List[_schemas.EpisodeList],tags=["Episodes"])
 def get_episodes(skip: int = 0, limit: int = 62, db: Session = Depends(get_db)):
     episodes = _crud.get_episodes(db, skip=skip, limit=limit)
     return episodes
 
 
-@app.get("/episodes/{episode_id}", response_model=_schemas.Episode,tags=["Episodes"])
+@app.get("/episode/{episode_id}", response_model=_schemas.EpisodeList,tags=["Episodes"])
 def get_episode_by_id(episode_id: int, db: Session = Depends(get_db)):
     db_episode = _crud.get_episode(db, episode_id=episode_id)
     if db_episode is None:
@@ -123,7 +124,7 @@ def get_actor_by_id(actor_id: int, db: Session = Depends(get_db)):
     return db_actor
 
 
-@app.get("/actors/chars", response_model=List[_schemas.ActorChar], tags=["Actors"])
+@app.get("/actors/chars/", response_model=List[_schemas.ActorChar], tags=["Actors"])
 def get_actors_and_chars(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     actors = _crud.get_actors_chars(db, skip=skip, limit=limit)
     return actors
@@ -143,10 +144,10 @@ def get_character_by_id(character_id: int, db: Session = Depends(get_db)):
     return db_character
 
 
-@app.get("/jobs/", response_model=List[_schemas.Job], tags=["Characters"])
-def get_jobs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    jobs = _crud.get_jobs(db, skip=skip, limit=limit)
-    return jobs
+# @app.get("/jobs/", response_model=List[_schemas.Job], tags=["Characters"])
+# def get_jobs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+#     jobs = _crud.get_jobs(db, skip=skip, limit=limit)
+#     return jobs
 
 
 if __name__ == "__main__":
