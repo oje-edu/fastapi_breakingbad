@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 
 import models as _models
 
+
 def get_season(db: Session, season_id: int):
     return db.query(_models.Season).filter(_models.Season.season_id == season_id).first()
 

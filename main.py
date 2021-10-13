@@ -29,7 +29,6 @@ Works:
 * **Read all Actors (without DOB) and Characters**.
 * **Read all Characters**.
 * **Read Character by ID**.
-* **Read all Jobs**.
 
 ©2021 - oje-edu
 """
