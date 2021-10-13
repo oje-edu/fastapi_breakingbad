@@ -33,7 +33,7 @@ class Actor(_database.Base):
     actor_id = _sql.Column(_sql.Integer, primary_key=True)
     firstname = _sql.Column(_sql.String)
     lastname = _sql.Column(_sql.String)
-    birthday = _sql.Column(_sql.Date, default=0000-00-00)
+    birthday = _sql.Column(_sql.Date, default=1000-00-00)
     image = _sql.Column(_sql.String)
     url = _sql.Column(_sql.String)
 

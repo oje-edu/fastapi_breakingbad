@@ -1,13 +1,13 @@
-from datetime import date
+import datetime as _dt
 from typing import List, Optional
 
-from pydantic import BaseModel
+import pydantic as _pydantic
 
 
-class EpisodeBase(BaseModel):
+class _EpisodeBase(_pydantic.BaseModel):
     episode_id: int
 
-class EpisodeList(EpisodeBase):
+class EpisodeList(_EpisodeBase):
     episode_id: int
     title: str
     plot: Optional[str] = None
@@ -16,17 +16,17 @@ class EpisodeList(EpisodeBase):
     class Config:
         orm_mode = True
 
-class Episode(EpisodeBase):
+class Episode(_EpisodeBase):
     episode_id: int
     season_id: int
 
     class Config:
         orm_mode = True
 
-class SeasonBase(BaseModel):
+class _SeasonBase(_pydantic.BaseModel):
     season_id: int
 
-class SeasonList(SeasonBase):
+class SeasonList(_SeasonBase):
     season_id: int
     title: str
     plot: str
@@ -35,7 +35,7 @@ class SeasonList(SeasonBase):
 
     class Config:
         orm_mode = True
-class Season(SeasonBase):
+class Season(_SeasonBase):
     season_id: int
     title: str
     plot: str
@@ -46,36 +46,36 @@ class Season(SeasonBase):
     class Config:
         orm_mode = True
 
-class StatusBase(BaseModel):
+class _StatusBase(_pydantic.BaseModel):
     status_id: int
 
-class Status(StatusBase):
+class Status(_StatusBase):
     status_id: int
     status_name: str
 
     class Config:
         orm_mode = True
 
-class FamilyBase(BaseModel):
+class _FamilyBase(_pydantic.BaseModel):
     family_id: int
 
-class Family(FamilyBase):
+class Family(_FamilyBase):
     family_name: Optional[str] = None
 
     class Config:
         orm_mode = True
 
-class JobBase(BaseModel):
+class _JobBase(_pydantic.BaseModel):
     job_id: int
 
-class Job(JobBase):
+class Job(_JobBase):
     jobname: Optional[str] = None
     jobdesc: Optional[str] = None
 
     class Config:
         orm_mode = True
 
-class CharacterBase(BaseModel):
+class _CharacterBase(_pydantic.BaseModel):
     character_id: int
     firstname: str
     lastname: str
@@ -83,7 +83,7 @@ class CharacterBase(BaseModel):
     image: Optional[str] = None
     status: Optional[Status] = None
 
-class Character(CharacterBase):
+class Character(_CharacterBase):
     character_id: int
     # actor_id: int
     # status_id: int
@@ -94,20 +94,32 @@ class Character(CharacterBase):
     class Config:
         orm_mode = True
 
-class ActorBase(BaseModel):
+class CharacterName(_CharacterBase):
+    firstname: Optional[str] = None
+    lastname: Optional[str] = None
+    # actor_id: int
+    # status_id: int
+    # job_id: int
+    families: List[Family] = []
+    jobs: List[Job] = []
+
+    class Config:
+        orm_mode = True
+
+class _ActorBase(_pydantic.BaseModel):
     actor_id: int
 
-class Actor(ActorBase):
+class Actor(_ActorBase):
     actor_id: int
     firstname: str
     lastname: str
-    # birthday: date
+    # birthday: _dt.date
     image: str
     url: str
     class Config:
         orm_mode = True
 
-class ActorChar(ActorBase):
+class ActorChar(_ActorBase):
     actor_id: int
     firstname: str
     lastname: str
@@ -118,7 +130,7 @@ class ActorChar(ActorBase):
     class Config:
         orm_mode = True
 
-class ActorSingle(ActorBase):
+class ActorSingle(_ActorBase):
     actor_id: int
     firstname: str
     lastname: str

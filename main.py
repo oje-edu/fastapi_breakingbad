@@ -29,6 +29,7 @@ Works:
 * **Read all Actors (without DOB) and Characters**.
 * **Read all Characters**.
 * **Read Character by ID**.
+* **Read Character by Firstname or Lastname**.
 
 ©2021 - oje-edu
 """
@@ -141,6 +142,13 @@ def get_character_by_id(character_id: int, db: Session = Depends(get_db)):
     if db_character is None:
         raise HTTPException(status_code=404, detail="Character not found")
     return db_character
+
+@app.get("/characters/name/", response_model=_schemas.CharacterName,tags=["Characters"])
+def get_character_by_name(firstname: Optional[str] = None, lastname: Optional[str] = None,  db: Session = Depends(get_db)):
+    db_name = _crud.get_character_name(db, firstname=firstname, lastname=lastname)
+    if db_name is None:
+        raise HTTPException(status_code=404, detail="Character with this name not found")
+    return db_name
 
 
 # @app.get("/jobs/", response_model=List[_schemas.Job], tags=["Characters"])
