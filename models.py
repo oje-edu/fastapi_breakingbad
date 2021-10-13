@@ -1,6 +1,5 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, Text
-from sqlalchemy.types import Date
-from sqlalchemy.orm import relationship
+import sqlalchemy as _sql
+import sqlalchemy.orm as _orm
 
 import database  as _database
 
@@ -8,90 +7,90 @@ import database  as _database
 class Season(_database.Base):
     __tablename__ = "seasons"
 
-    season_id = Column(Integer, primary_key=True)
-    title = Column(String)
-    plot = Column(String)
-    image = Column(String)
-    year = Column(String)
+    season_id = _sql.Column(_sql.Integer, primary_key=True)
+    title = _sql.Column(_sql.String)
+    plot = _sql.Column(_sql.String)
+    image = _sql.Column(_sql.String)
+    year = _sql.Column(_sql.String)
 
-    episodes = relationship("Episode", back_populates="season")
+    episodes = _orm.relationship("Episode", back_populates="season")
 
 class Episode(_database.Base):
     __tablename__ = "episodes"
 
-    episode_id = Column(Integer, primary_key=True)
-    title = Column(String)
-    plot = Column(Text)
-    image = Column(String)
+    episode_id = _sql.Column(_sql.Integer, primary_key=True)
+    title = _sql.Column(_sql.String)
+    plot = _sql.Column(_sql.Text)
+    image = _sql.Column(_sql.String)
 
-    season_id = Column(Integer, ForeignKey("seasons.season_id"))
+    season_id = _sql.Column(_sql.Integer, _sql.ForeignKey("seasons.season_id"))
 
-    season = relationship("Season", back_populates="episodes")
+    season = _orm.relationship("Season", back_populates="episodes")
 
 class Actor(_database.Base):
     __tablename__ = "actors"
 
-    actor_id = Column(Integer, primary_key=True)
-    firstname = Column(String)
-    lastname = Column(String)
-    birthday = Column(Date)
-    image = Column(String)
-    url = Column(String)
+    actor_id = _sql.Column(_sql.Integer, primary_key=True)
+    firstname = _sql.Column(_sql.String)
+    lastname = _sql.Column(_sql.String)
+    birthday = _sql.Column(_sql.Date, default=0000-00-00)
+    image = _sql.Column(_sql.String)
+    url = _sql.Column(_sql.String)
 
-    characters = relationship("Character", back_populates="actor")
+    characters = _orm.relationship("Character", back_populates="actor")
 
 class Status(_database.Base):
     __tablename__ = "statuses"
 
-    status_id = Column(Integer, primary_key=True)
-    status_name = Column(String)
+    status_id = _sql.Column(_sql.Integer, primary_key=True)
+    status_name = _sql.Column(_sql.String)
 
-    characters = relationship("Character", back_populates="status")
+    characters = _orm.relationship("Character", back_populates="status")
 
 class Family(_database.Base):
     __tablename__ = "families"
 
-    family_id = Column(Integer, primary_key=True)
-    family_name = Column(String)
+    family_id = _sql.Column(_sql.Integer, primary_key=True)
+    family_name = _sql.Column(_sql.String)
 
-    characters = relationship("Character", secondary="characters_families", back_populates="families")
+    characters = _orm.relationship("Character", secondary="characters_families", back_populates="families")
 
 class Job(_database.Base):
     __tablename__ = "jobs"
 
-    job_id = Column(Integer, primary_key=True)
-    jobname = Column(String)
-    jobdesc = Column(Text)
+    job_id = _sql.Column(_sql.Integer, primary_key=True)
+    jobname = _sql.Column(_sql.String)
+    jobdesc = _sql.Column(_sql.Text)
 
-    characters = relationship("Character", secondary="characters_jobs", back_populates="jobs")
+    characters = _orm.relationship("Character", secondary="characters_jobs", back_populates="jobs")
 
 class Character(_database.Base):
     __tablename__ = "characters"
 
-    character_id = Column(Integer, primary_key=True)
-    firstname = Column(String)
-    lastname = Column(String)
-    aliasname = Column(String)
-    image = Column(String)
+    character_id = _sql.Column(_sql.Integer, primary_key=True)
+    firstname = _sql.Column(_sql.String)
+    lastname = _sql.Column(_sql.String)
+    aliasname = _sql.Column(_sql.String)
+    image = _sql.Column(_sql.String)
 
-    status_id=Column(Integer,ForeignKey("statuses.status_id"))
-    status = relationship("Status", back_populates="characters")
+    status_id=_sql.Column(_sql.Integer,_sql.ForeignKey("statuses.status_id"))
+    status = _orm.relationship("Status", back_populates="characters")
 
-    actor_id = Column(Integer, ForeignKey("actors.actor_id"))
-    actor = relationship("Actor", back_populates="characters")
+    actor_id = _sql.Column(_sql.Integer, _sql.ForeignKey("actors.actor_id"))
+    actor = _orm.relationship("Actor", back_populates="characters")
 
-    families = relationship('Family', secondary="characters_families", back_populates="characters")
-    jobs = relationship('Job', secondary="characters_jobs", back_populates="characters")
+    families = _orm.relationship('Family', secondary="characters_families", back_populates="characters")
+    jobs = _orm.relationship('Job', secondary="characters_jobs", back_populates="characters")
 
 class CharFamily(_database.Base):
     __tablename__ = "characters_families"
 
-    cf_id = Column(Integer, primary_key=True, index=True)
-    cf_character = Column(Integer, ForeignKey('characters.character_id'), primary_key=True)
-    cf_family = Column(Integer, ForeignKey('families.family_id'), primary_key=True)
+    cf_id = _sql.Column(_sql.Integer, primary_key=True, index=True)
+    cf_character = _sql.Column(_sql.Integer, _sql.ForeignKey('characters.character_id'), primary_key=True)
+    cf_family = _sql.Column(_sql.Integer, _sql.ForeignKey('families.family_id'), primary_key=True)
 class CharJob(_database.Base):
     __tablename__ = "characters_jobs"
 
-    cj_id = Column(Integer, primary_key=True, index=True)
-    cj_character = Column(Integer, ForeignKey('characters.character_id'), primary_key=True)
-    cj_job = Column(Integer, ForeignKey('jobs.job_id'), primary_key=True)
+    cj_id = _sql.Column(_sql.Integer, primary_key=True, index=True)
+    cj_character = _sql.Column(_sql.Integer, _sql.ForeignKey('characters.character_id'), primary_key=True)
+    cj_job = _sql.Column(_sql.Integer, _sql.ForeignKey('jobs.job_id'), primary_key=True)
