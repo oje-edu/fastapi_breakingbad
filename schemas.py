@@ -95,8 +95,8 @@ class Character(_CharacterBase):
         orm_mode = True
 
 class CharacterName(_CharacterBase):
-    firstname: Optional[str] = None
-    lastname: Optional[str] = None
+    firstname: str
+    lastname: str
     # actor_id: int
     # status_id: int
     # job_id: int
