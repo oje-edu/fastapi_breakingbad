@@ -7,7 +7,7 @@ _IN DEVELOPMENT_
 - [Backend](https://bbdevapi.oje.guru/docs)
 - [Frontend](https://breakingbad-client.vercel.app/)
 
-## Requirements
+## Backend Requirements
 
 - python3
 - mysql/mariadb
@@ -66,3 +66,5 @@ WantedBy=multi-user.target
 - Check the service
 
   `sudo systemctl status fastapi-breakingbad.service`
+
+  ## Frontend
