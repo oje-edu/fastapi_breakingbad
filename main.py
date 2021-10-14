@@ -3,7 +3,10 @@ import uvicorn
 import os
 from typing import List, Optional
 
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.orm import Session
 
@@ -29,6 +32,7 @@ Works:
 * **Read all Actors (without DOB) and Characters**.
 * **Read all Characters**.
 * **Read Character by ID**.
+* **Read Character by Names**.
 
 ©2021 - oje-edu
 """
@@ -79,6 +83,15 @@ def get_db():
         yield db
     finally:
         db.close()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/", response_class=HTMLResponse)
+async def read_read_home(request: Request, character_id: str):
+    return templates.TemplateResponse("character.html", {"request": request, "id": character_id})
 
 
 @app.get("/seasons/", response_model=List[_schemas.SeasonList], tags=["Seasons"])
