@@ -142,7 +142,8 @@ def get_character_by_id(character_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Character not found")
     return db_character
 
-@app.get("/character/name/", response_model=_schemas.CharacterName,tags=["Characters"])
+
+@app.get("/character/name/", response_model=List[_schemas.CharacterName],tags=["Characters"])
 def get_character_by_name(firstname: Optional[str] = None, lastname: Optional[str] = None,  db: Session = Depends(get_db)):
     db_name = _crud.get_character_name(db, firstname=firstname, lastname=lastname)
     if db_name is None:
