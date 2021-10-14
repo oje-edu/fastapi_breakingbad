@@ -15,7 +15,7 @@ def get_actor(db: Session, actor_id: int):
 def get_character(db: Session, character_id: int):
     return db.query(_models.Character).filter(_models.Character.character_id == character_id).first()
 
-def get_character_name(db: Session, firstname: str, lastname: str):
+def get_character_names(db: Session, firstname: str, lastname: str):
     if firstname:
         query = db.query(_models.Character).filter(_models.Character.firstname.contains(firstname)).all()
     if lastname:
