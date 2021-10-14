@@ -12,13 +12,14 @@ import CharactersPage from "./pages/CharactersPage";
 import EpisodesPage from "./pages/EpisodesPage";
 import SeasonsEpisodePage from "./pages/SeasonsEpisodePage";
 import ActorsPage from "./pages/ActorsPage";
+import Footer from "./components/ui/Footer";
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="app">
       <Router>
+        <Header />
         <div className="container">
-          <Header />
           <main>
             <Switch>
               <Route path="/actors" component={ActorsPage} />
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/" component={SeasonsPage} />
             </Switch>
           </main>
+          <Footer />
         </div>
       </Router>
     </div>

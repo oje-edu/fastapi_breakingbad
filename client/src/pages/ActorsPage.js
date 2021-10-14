@@ -11,7 +11,7 @@ const ActorsPage = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const result = await axios(`https://bbdevapi.oje.guru/actors/chars/`);
-      console.log(result);
+      console.log(result.data);
       setItems(result.data);
       setIsLoading(false);
     };
