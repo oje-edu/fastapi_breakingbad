@@ -87,7 +87,7 @@ def get_seasons(skip: int = 0, limit: int = 5, db: Session = Depends(get_db)):
     return seasons
 
 
-@app.get("/episodes/{season_id}", response_model=_schemas.Season,tags=["Episodes"])
+@app.get("/seasons/{season_id}/episodes/", response_model=_schemas.Season,tags=["Seasons"])
 def get_episodes_by_season(season_id: int, db: Session = Depends(get_db)):
     db_season = _crud.get_season(db, season_id=season_id)
     if db_season is None:

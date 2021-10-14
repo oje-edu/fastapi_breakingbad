@@ -1,8 +1,11 @@
-const CharacterItem = ({ item }) => {
+const ActorItem = ({ item }) => {
   return (
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
+          <h5>
+            {item.firstname} {item.lastname}
+          </h5>
           <img src={item.image} alt="" />
         </div>
         <div className="card-back">
@@ -12,17 +15,9 @@ const CharacterItem = ({ item }) => {
               <strong>Name:</strong> {item.firstname} {item.lastname}
             </li>
             <li>
-              <strong>Spitzname(n):</strong> {item.aliasname}
+              <strong>Character:</strong> {item.characters.firstname}{" "}
+              {item.characters.lastname}
             </li>
-            <li>
-              <strong>Serien Status:</strong> {item.status.status_name}
-            </li>
-            {/* <li>
-              <strong>Familie und Freunde:</strong> {item.families.family_name}
-            </li>
-            <li>
-              <strong>Berufe:</strong> {item.jobs.jobname}
-            </li> */}
           </ul>
         </div>
       </div>
@@ -30,4 +25,4 @@ const CharacterItem = ({ item }) => {
   );
 };
 
-export default CharacterItem;
+export default ActorItem;
