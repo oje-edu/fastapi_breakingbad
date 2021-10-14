@@ -9,7 +9,7 @@ const EpisodeItem = ({ item }) => {
         <div className="card-front">
           <h5>Episode {item.episode_id}</h5>
           <img
-            onClick={() => history.push(`/seasons/${item.season_id}`)}
+            // onClick={() => history.push(`/seasons/${item.season_id}`)}
             src={item.image}
             alt=""
           />
