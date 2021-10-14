@@ -3,7 +3,7 @@ const CharacterItem = ({ item }) => {
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
-          <img src={item.img} alt="" />
+          <img src={item.image} alt="" />
         </div>
         <div className="card-back">
           <h1>{item.firstname}</h1>
