@@ -75,9 +75,10 @@ app = FastAPI(
 )
 
 origins = [
-    "https://bbdevapi.oje.guru/",
+    "https://breakingbad-client.vercel.app",
     "http://localhost",
     "http://localhost:3000",
+    "*",
 ]
 
 app.add_middleware(
