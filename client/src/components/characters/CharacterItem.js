@@ -17,12 +17,20 @@ const CharacterItem = ({ item }) => {
             <li>
               <strong>Serien Status:</strong> {item.status.status_name}
             </li>
-            {/* <li>
-              <strong>Familie und Freunde:</strong> {item.families.family_name}
+            <li>
+              {item.families.map((family) => (
+                <div key={family.family_id} family={family}>
+                  <strong>Familie/Freunde:</strong> {family.family_name}
+                </div>
+              ))}
             </li>
             <li>
-              <strong>Berufe:</strong> {item.jobs.jobname}
-            </li> */}
+              {item.jobs.map((job) => (
+                <div key={job.job_id} job={job}>
+                  <strong>Beruf:</strong> {job.jobname}
+                </div>
+              ))}
+            </li>
           </ul>
         </div>
       </div>
