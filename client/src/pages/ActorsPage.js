@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ActorGrid from "../components/actors/ActorGrid";
-import Search from "../components/ui/Search";
-import axios from "axios";
+// import Search from "../components/ui/Search";
+import api from "../api";
 
 const ActorsPage = () => {
   const [items, setItems] = useState([]);
@@ -10,10 +10,16 @@ const ActorsPage = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`https://bbdevapi.oje.guru/actors/chars/`);
-      console.log(result.data);
-      setItems(result.data);
-      setIsLoading(false);
+      api
+        .getActorsData(items)
+        .then((result) => {
+          setItems(result.data);
+          setIsLoading(false);
+          console.log(result.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     fetchItems();

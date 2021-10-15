@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import EpisodeGrid from "../components/episodes/EpisodeGrid";
 // import Search from "../components/ui/Search";
-import axios from "axios";
+import api from "../api";
 
 const EpisodesPage = () => {
   const [items, setItems] = useState([]);
@@ -10,10 +10,16 @@ const EpisodesPage = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`https://bbdevapi.oje.guru/episodes/${query}`);
-
-      setItems(result.data);
-      setIsLoading(false);
+      api
+        .getEpisodesData(items)
+        .then((result) => {
+          setItems(result.data);
+          setIsLoading(false);
+          console.log(result.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     fetchItems();

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SeasonsGrid from "../components/seasons/SeasonGrid";
 
-import axios from "axios";
+import api from "../api";
 
 const SeasonsPage = () => {
   const [items, setItems] = useState([]);
@@ -9,10 +9,16 @@ const SeasonsPage = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`https://bbdevapi.oje.guru/seasons/`);
-
-      setItems(result.data);
-      setIsLoading(false);
+      api
+        .getSeasonsData(items)
+        .then((result) => {
+          setItems(result.data);
+          setIsLoading(false);
+          console.log(result.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     fetchItems();

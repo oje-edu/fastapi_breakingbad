@@ -1,4 +1,5 @@
 const ActorItem = ({ item }) => {
+  console.log(item);
   return (
     <div className="card">
       <div className="card-inner">
@@ -14,7 +15,11 @@ const ActorItem = ({ item }) => {
           </h1>
           <ul>
             <li>
-              <strong>IN DEV</strong>
+              {item.characters.map((char) => (
+                <div key={char.character_id} char={char}>
+                  Charakter: {char.firstname} {char.lastname}
+                </div>
+              ))}
             </li>
           </ul>
         </div>

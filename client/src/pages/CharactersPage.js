@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import CharacterGrid from "../components/characters/CharacterGrid";
 import Search from "../components/ui/Search";
 import axios from "axios";
+import api from "../api";
 
 const CharactersPage = () => {
   const [items, setItems] = useState([]);

@@ -6,12 +6,9 @@ const ActorGrid = ({ items, isLoading }) => {
     <Spinner />
   ) : (
     <section className="cards">
-      {items.map(
-        (item) => (
-          console.log(item),
-          (<ActorItem key={item.actor_id} item={item}></ActorItem>)
-        )
-      )}
+      {items.map((item) => (
+        <ActorItem key={item.actor_id} item={item}></ActorItem>
+      ))}
     </section>
   );
 };
