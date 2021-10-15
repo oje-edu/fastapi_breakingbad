@@ -167,7 +167,7 @@ def get_character_by_names(firstname: Optional[str] = None, lastname: Optional[s
     return db_name
 
 
-# @app.get("/jobs/", response_model=List[_schemas.Job], tags=["Characters"])
+# @app.get("/jobs/", response_model=List[_schemas.CharacterJob], tags=["Characters"])
 # def get_jobs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     jobs = _crud.get_jobs(db, skip=skip, limit=limit)
 #     return jobs

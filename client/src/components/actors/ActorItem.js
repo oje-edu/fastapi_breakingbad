@@ -1,5 +1,4 @@
 const ActorItem = ({ item }) => {
-  console.log(item);
   return (
     <div className="card">
       <div className="card-inner">

@@ -1,3 +1,4 @@
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 import models as _models
@@ -39,7 +40,7 @@ def get_episodes(db: Session, skip: int = 0, limit: int = 100):
     return db.query(_models.Episode).offset(skip).limit(limit).all()
 
 def get_jobs(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(_models.Job).offset(skip).limit(limit).all()
+    return db.query(_models.Character.firstname, _models.Character.lastname, func.group_concat(_models.Job.jobname, ', ')).group_by(_models.Character.firstname,_models.Character.lastname).offset(skip).limit(limit).all()
 
 def get_families(db: Session, skip: int = 0, limit: int = 100):
     return db.query(_models.Family).offset(skip).limit(limit).all()

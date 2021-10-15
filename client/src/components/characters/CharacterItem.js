@@ -18,9 +18,9 @@ const CharacterItem = ({ item }) => {
               <strong>Serien Status:</strong> {item.status.status_name}
             </li>
             <li>
-              {item.families.map((family) => (
-                <div key={family.family_id} family={family}>
-                  <strong>Familie/Freunde:</strong> {family.family_name}
+              {item.families.map(({ family_id, family_name }) => (
+                <div key={family_id}>
+                  <strong>Familie/Freunde:</strong> {family_name}
                 </div>
               ))}
             </li>

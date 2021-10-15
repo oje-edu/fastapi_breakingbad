@@ -15,7 +15,6 @@ const EpisodesPage = () => {
         .then((result) => {
           setItems(result.data);
           setIsLoading(false);
-          console.log(result.data);
         })
         .catch((error) => {
           console.log(error);
