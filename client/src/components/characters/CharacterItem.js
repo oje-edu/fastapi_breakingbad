@@ -1,31 +1,31 @@
-const CharacterItem = ({ item }) => {
+const CharacterItem = ({ character }) => {
   return (
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
-          <img src={item.image} alt="" />
+          <img src={character.image} alt="" />
         </div>
         <div className="card-back">
-          <h1>{item.firstname}</h1>
+          <h1>{character.firstname}</h1>
           <ul>
             <li>
-              <strong>Name:</strong> {item.firstname} {item.lastname}
+              <strong>Name:</strong> {character.firstname} {character.lastname}
             </li>
             <li>
-              <strong>Spitzname(n):</strong> {item.aliasname}
+              <strong>Spitzname(n):</strong> {character.aliasname}
             </li>
             <li>
-              <strong>Serien Status:</strong> {item.status.status_name}
+              <strong>Serien Status:</strong> {character.status.status_name}
             </li>
             <li>
-              {item.families.map(({ family_id, family_name }) => (
+              {character.families.map(({ family_id, family_name }) => (
                 <div key={family_id}>
                   <strong>Familie/Freunde:</strong> {family_name}
                 </div>
               ))}
             </li>
             <li>
-              {item.jobs.map((job) => (
+              {character.jobs.map((job) => (
                 <div key={job.job_id} job={job}>
                   <strong>Beruf:</strong> {job.jobname}
                 </div>

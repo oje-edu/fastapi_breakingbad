@@ -5,26 +5,26 @@ import axios from "axios";
 import api from "../api";
 
 const CharactersPage = () => {
-  const [items, setItems] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const fetchItems = async () => {
-      const result = await axios(
+    const fetchCharacters = async () => {
+      const res = await axios(
         `https://bbdevapi.oje.guru/character/names/?firstname=${query}`
       );
-      setItems(result.data);
+      setCharacters(res.data);
       setIsLoading(false);
     };
 
-    fetchItems();
+    fetchCharacters();
   }, [query]);
 
   return (
     <>
       <Search getQuery={(q) => setQuery(q)} />
-      <CharacterGrid isLoading={isLoading} items={items} />
+      <CharacterGrid isLoading={isLoading} characters={characters} />
     </>
   );
 };
