@@ -1,6 +1,10 @@
 # Breakingbad API in german Language
 
-![GitHub last commit](https://img.shields.io/github/last-commit/oje-edu/fastapi_breakingbad) ![GitHub repo size](https://img.shields.io/github/repo-size/oje-edu/fastapi_breakingbad) ![Backend](https://img.shields.io/website?down_color=red&down_message=offline&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fbbdevapi.oje.guru/docs) ![Frontend](https://img.shields.io/website?down_color=red&down_message=offline&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fbreakingbad-client.vercel.app)
+![GitHub last commit](https://img.shields.io/github/last-commit/oje-edu/fastapi_breakingbad) ![GitHub repo size](https://img.shields.io/github/repo-size/oje-edu/fastapi_breakingbad)
+
+Server ![Backend](https://img.shields.io/website?down_color=red&down_message=offline&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fbbdevapi.oje.guru/docs)
+
+Client: ![Frontend](https://img.shields.io/website?down_color=red&down_message=offline&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fbreakingbad-client.vercel.app)
 
 _IN DEVELOPMENT_
 
