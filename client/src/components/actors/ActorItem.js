@@ -1,3 +1,4 @@
+import moment from "moment";
 const ActorItem = ({ actor }) => {
   var dob = new Date(actor.birthday);
   var month_diff = Date.now() - dob.getTime();
@@ -8,9 +9,6 @@ const ActorItem = ({ actor }) => {
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
-          {/* <h5>
-            {actor.firstname} {actor.lastname}
-          </h5> */}
           <img src={actor.image} alt="" />
         </div>
         <div className="card-back">
@@ -18,19 +16,19 @@ const ActorItem = ({ actor }) => {
             {actor.firstname} {actor.lastname}
           </h1>
           <ul>
-            <li>Geburtstag: {actor.birthday}</li>
-            <li>Alter: {age}</li>
+            <li>
+              Geboren:{" "}
+              {actor.birthday === "1900-01-01"
+                ? "Keine Info gefunden"
+                : moment(actor.birthday).format("DD.MM.YYYY")}
+            </li>
+            <li>
+              Alter: {actor.birthday === "1900-01-01" ? "Unbekannt" : age}
+            </li>
             <li>
               <a href={actor.url} target="_blank" rel="noopener noreferrer">
                 Biografie
               </a>
-            </li>
-            <li>
-              {actor.characters.map((char) => (
-                <div key={char.character_id} char={char}>
-                  Charakter: {char.firstname} {char.lastname}
-                </div>
-              ))}
             </li>
           </ul>
         </div>

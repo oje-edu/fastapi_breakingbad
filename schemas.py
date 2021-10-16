@@ -135,8 +135,9 @@ class ActorChar(_ActorBase):
     actor_id: int
     firstname: str
     lastname: str
-    image: str
-    url: str
+    birthday: _dt.date
+    charactor_id: int
+
     characters: List[Character] = []
 
     class Config:
@@ -146,6 +147,7 @@ class ActorSingle(_ActorBase):
     actor_id: int
     firstname: str
     lastname: str
+    birthday: _dt.date
     image: str
     url: str
     class Config:

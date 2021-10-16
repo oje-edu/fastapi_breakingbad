@@ -139,7 +139,7 @@ def get_actor_by_id(actor_id: int, db: Session = Depends(get_db)):
     return db_actor
 
 
-@app.get("/actors/chars/", response_model=List[_schemas.ActorChar], tags=["Actors"])
+@app.get("/actors/characters/", response_model=List[_schemas.ActorChar], tags=["Actors"])
 def get_actors_and_chars(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     actors = _crud.get_actors_chars(db, skip=skip, limit=limit)
     return actors

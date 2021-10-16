@@ -28,7 +28,7 @@ def get_seasons(db: Session, skip: int = 0, limit: int = 100):
     return db.query(_models.Season).offset(skip).limit(limit).all()
 
 def get_actors_chars(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(_models.Actor).offset(skip).limit(limit).all()
+    return db.query(_models.ActorChar).offset(skip).limit(limit).all()
 
 def get_actors(db: Session, skip: int = 0, limit: int = 100):
     return db.query(_models.Actor).offset(skip).limit(limit).all()

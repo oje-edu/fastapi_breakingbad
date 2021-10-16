@@ -16,6 +16,10 @@ export default {
   },
 
   getActorsData() {
+    return axios.get(apiurl + "/actors/");
+  },
+
+  getActorsCharsData() {
     return axios.get(apiurl + "/actors/chars/");
   },
 

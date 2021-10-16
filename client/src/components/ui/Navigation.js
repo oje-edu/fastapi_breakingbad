@@ -4,17 +4,17 @@ const Navigation = () => {
     <nav className="navbar">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <NavLink className="nav-link" to="/episodes" exact>
+          <NavLink className="nav-link" to="/episodes">
             Episoden
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/actors" exact>
+          <NavLink className="nav-link" to="/actors">
             Schauspieler
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/characters" exact>
+          <NavLink className="nav-link" to="/characters">
             Charaktere
           </NavLink>
         </li>

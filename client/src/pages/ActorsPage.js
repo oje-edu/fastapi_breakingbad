@@ -5,6 +5,7 @@ import api from "../api";
 
 const ActorsPage = () => {
   const [actors, setActors] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

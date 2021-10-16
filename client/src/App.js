@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/ui/Header";
 
+import moment from "moment";
+import localization from "moment/locale/de";
+
 import "./App.css";
 import SeasonsPage from "./pages/SeasonsPage";
 import CharactersPage from "./pages/CharactersPage";
