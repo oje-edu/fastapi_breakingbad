@@ -1,19 +1,23 @@
 import { useHistory } from "react-router-dom";
 
-const EpisodeSeasonItem = ({ sepisode }) => {
+const EpisodeSeasonItem = ({ episode }) => {
   let history = useHistory();
 
   return (
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
-          <img src={sepisode.image} alt="" />
+          <img src={episode.image} alt="" />
         </div>
         <div className="card-back">
-          <h1>{sepisode.title}</h1>
+          <h1>{episode.title}</h1>
           <ul>
             <li>
-              <strong>Plot:</strong> {sepisode.plot}
+              <p>
+                {episode.plot.length > 250
+                  ? episode.plot.substring(0, 250) + " ..."
+                  : episode.plot}
+              </p>
             </li>
           </ul>
         </div>

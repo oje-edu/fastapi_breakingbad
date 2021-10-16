@@ -1,4 +1,4 @@
-import EpisodeSeasonItem from "./EpisodeItem";
+import EpisodeSeasonItem from "./EpisodeSeasonItem";
 import Spinner from "../ui/Spinner";
 
 const EpisodeSeasonGrid = ({ seasonEpisodes, isLoading }) => {
