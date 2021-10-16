@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import EpisodeSeasonGrid from "../components/episodes/EpisodeSeasonGrid";
 
 import axios from "axios";
+import api from "../api";
 
 const SeasonsEpisodePage = (props) => {
   const { id } = props.match.params;
@@ -10,9 +11,8 @@ const SeasonsEpisodePage = (props) => {
 
   useEffect(() => {
     const fetchSeasonEpisodes = async () => {
-      const res = await axios(
-        `https://bbdevapi.oje.guru/seasons/${id}/episodes`
-      )
+      api
+        .getSeasonEpisodesData(id)
         .then((res) => {
           setSeasonEpisodes(res.data);
           setIsLoading(false);

@@ -13,6 +13,7 @@ const SeasonsPage = () => {
         .getSeasonsData(seasons)
         .then((res) => {
           setSeasons(res.data);
+          console.log(res.data);
           setIsLoading(false);
         })
         .catch((err) => {

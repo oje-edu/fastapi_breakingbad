@@ -1,30 +1,25 @@
 import axios from "axios";
-// Create instance called instance
-const instance = axios.create({
-  baseURL: "https://bbdevapi.oje.guru",
-  headers: {
-    "content-type": "application/octet-stream",
-  },
-});
+
+const apiurl = "https://bbdevapi.oje.guru";
+
 export default {
-  getSeasonsData: () =>
-    instance({
-      method: "GET",
-      url: "/seasons/",
-      // params: {
-      //   query: "query",
-      // },
-    }),
+  getSeasonsData() {
+    return axios.get(apiurl + "/seasons/");
+  },
 
-  getEpisodesData: () =>
-    instance({
-      method: "GET",
-      url: "/episodes/",
-    }),
+  getSeasonEpisodesData(id) {
+    return axios.get(apiurl + "/seasons/" + id + "/episodes/");
+  },
 
-  getActorsData: () =>
-    instance({
-      method: "GET",
-      url: "/actors/chars/",
-    }),
+  getEpisodesData() {
+    return axios.get(apiurl + "/episodes/");
+  },
+
+  getActorsData() {
+    return axios.get(apiurl + "/actors/chars/");
+  },
+
+  getCharactersData(query) {
+    return axios.get(apiurl + "/character/names/?firstname=" + query);
+  },
 };
