@@ -10,7 +10,9 @@ const SeasonsEpisodePage = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`https://bbdevapi.oje.guru/seasons/${query}`);
+      const result = await axios(
+        `https://bbdevapi.oje.guru/seasons/${query}/episodes`
+      );
 
       setItems(result.data);
       setIsLoading(false);

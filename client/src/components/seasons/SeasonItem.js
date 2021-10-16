@@ -1,16 +1,22 @@
-const SeasonItem = ({ item }) => {
+import { Link } from "react-router-dom";
+const SeasonItem = ({ season }) => {
   return (
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
-          <img src={item.image} alt="" />
+          <Link to={`/season/${season.season_id}/episodes`}>
+            <img src={season.image} alt="" />
+          </Link>
         </div>
         <div className="card-back">
-          <h1>{item.title}</h1>
+          <h1>{season.title}</h1>
           <ul>
-            <li>{item.plot}</li>
+            <li>{season.plot}</li>
             <li>
-              <strong>Produktionsjahr:</strong> {item.year}
+              <strong>Produktionsjahr:</strong> {season.year}
+            </li>
+            <li>
+              <Link to={`/season/${season.season_id}/seasons`}>Episoden </Link>
             </li>
           </ul>
         </div>

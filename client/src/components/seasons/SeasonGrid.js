@@ -1,13 +1,13 @@
 import SeasonItem from "./SeasonItem";
 import Spinner from "../ui/Spinner";
 
-const SeasonGrid = ({ items, isLoading }) => {
+const SeasonGrid = ({ seasons, isLoading }) => {
   return isLoading ? (
     <Spinner />
   ) : (
     <section className="cards">
-      {items.map((item) => (
-        <SeasonItem key={item.season_id} item={item}></SeasonItem>
+      {seasons.map((season) => (
+        <SeasonItem key={season.season_id} season={season}></SeasonItem>
       ))}
     </section>
   );

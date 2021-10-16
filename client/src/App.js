@@ -23,7 +23,10 @@ const App = () => {
           <main>
             <Switch>
               <Route path="/actors" component={ActorsPage} />
-              <Route path="/seasons/:id" component={SeasonsEpisodePage} />
+              <Route
+                path="/season/:id/episodes"
+                component={SeasonsEpisodePage}
+              />
               <Route path="/episodes" component={EpisodesPage} />
               <Route path="/characters" component={CharactersPage} />
               <Route path="/" component={SeasonsPage} />

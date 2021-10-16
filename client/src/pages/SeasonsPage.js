@@ -4,27 +4,27 @@ import SeasonsGrid from "../components/seasons/SeasonGrid";
 import api from "../api";
 
 const SeasonsPage = () => {
-  const [items, setItems] = useState([]);
+  const [seasons, setSeasons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchItems = async () => {
+    const fetchSeasons = async () => {
       api
-        .getSeasonsData(items)
-        .then((result) => {
-          setItems(result.data);
+        .getSeasonsData(seasons)
+        .then((res) => {
+          setSeasons(res.data);
           setIsLoading(false);
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
     };
 
-    fetchItems();
+    fetchSeasons();
   }, []);
   return (
     <>
-      <SeasonsGrid isLoading={isLoading} items={items} />
+      <SeasonsGrid isLoading={isLoading} seasons={seasons} />
     </>
   );
 };
