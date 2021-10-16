@@ -16,7 +16,7 @@ const SeasonItem = ({ season }) => {
               <strong>Produktionsjahr:</strong> {season.year}
             </li>
             <li>
-              <Link to={`/season/${season.season_id}/seasons`}>Episoden </Link>
+              <Link to={`/season/${season.season_id}/episodes`}>Episoden </Link>
             </li>
           </ul>
         </div>

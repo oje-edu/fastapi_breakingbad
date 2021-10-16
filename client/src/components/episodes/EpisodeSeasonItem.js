@@ -1,19 +1,19 @@
 import { useHistory } from "react-router-dom";
 
-const EpisodeSeasonItem = ({ item }) => {
+const EpisodeSeasonItem = ({ sepisode }) => {
   let history = useHistory();
 
   return (
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
-          <img src={item.image} alt="" />
+          <img src={sepisode.image} alt="" />
         </div>
         <div className="card-back">
-          <h1>{item.title}</h1>
+          <h1>{sepisode.title}</h1>
           <ul>
             <li>
-              <strong>Plot:</strong> {item.plot}
+              <strong>Plot:</strong> {sepisode.plot}
             </li>
           </ul>
         </div>

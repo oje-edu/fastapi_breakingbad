@@ -3,26 +3,25 @@ import EpisodeSeasonGrid from "../components/episodes/EpisodeSeasonGrid";
 
 import axios from "axios";
 
-const SeasonsEpisodePage = () => {
-  const [items, setItems] = useState([]);
+const SeasonsEpisodePage = ({ match }) => {
+  const [sepisodes, setSepisodes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const fetchItems = async () => {
-      const result = await axios(
-        `https://bbdevapi.oje.guru/seasons/${query}/episodes`
+    const fetchSeasonEpisodes = async () => {
+      const res = await axios(
+        `https://bbdevapi.oje.guru/seasons/${match.params.id}/episodes`
       );
 
-      setItems(result.data);
+      setSepisodes(res.data);
       setIsLoading(false);
     };
 
-    fetchItems();
+    fetchSeasonEpisodes();
   }, []);
   return (
     <>
-      <EpisodeSeasonGrid isLoading={isLoading} items={items} />
+      <EpisodeSeasonGrid isLoading={isLoading} sepisodes={sepisodes} />
     </>
   );
 };
