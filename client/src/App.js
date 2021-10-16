@@ -8,6 +8,7 @@ import EpisodesPage from "./pages/EpisodesPage";
 import SeasonsEpisodePage from "./pages/SeasonsEpisodePage";
 import ActorsPage from "./pages/ActorsPage";
 import Footer from "./components/ui/Footer";
+import ScrollButton from "./components/utils/ScrollButton";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
               <Route path="/characters" component={CharactersPage} />
               <Route path="/" component={SeasonsPage} />
             </Switch>
+            <ScrollButton />
           </main>
           <Footer />
         </div>
