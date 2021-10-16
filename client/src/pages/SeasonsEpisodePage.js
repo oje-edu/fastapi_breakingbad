@@ -1,27 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useParams } from "react";
 import EpisodeSeasonGrid from "../components/episodes/EpisodeSeasonGrid";
 
 import axios from "axios";
 
-const SeasonsEpisodePage = ({ match }) => {
-  const [sepisodes, setSepisodes] = useState([]);
+const SeasonsEpisodePage = (props) => {
+  const { id } = props.match.params;
+  const [seasonEpisodes, setSeasonEpisodes] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchSeasonEpisodes = async () => {
       const res = await axios(
-        `https://bbdevapi.oje.guru/seasons/${match.params.id}/episodes`
-      );
-
-      setSepisodes(res.data);
-      setIsLoading(false);
+        `https://bbdevapi.oje.guru/seasons/${id}/episodes`
+      )
+        .then((res) => {
+          setSeasonEpisodes(res.data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
-
     fetchSeasonEpisodes();
   }, []);
   return (
     <>
-      <EpisodeSeasonGrid isLoading={isLoading} sepisodes={sepisodes} />
+      <EpisodeSeasonGrid
+        isLoading={isLoading}
+        seasonEpisodes={seasonEpisodes}
+      />
     </>
   );
 };

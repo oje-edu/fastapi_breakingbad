@@ -1,15 +1,15 @@
 import EpisodeSeasonItem from "./EpisodeItem";
 import Spinner from "../ui/Spinner";
 
-const EpisodeSeasonGrid = ({ sepisodes, isLoading }) => {
+const EpisodeSeasonGrid = ({ seasonEpisodes, isLoading }) => {
   return isLoading ? (
     <Spinner />
   ) : (
     <section className="cards">
-      {sepisodes.map((sepisode) => (
+      {seasonEpisodes.episodes.map((episode) => (
         <EpisodeSeasonItem
-          key={sepisode.episode_id}
-          sepisode={sepisode}
+          key={episode.episode_id}
+          episode={episode}
         ></EpisodeSeasonItem>
       ))}
     </section>
