@@ -5,6 +5,7 @@ import api from "../api";
 
 const EpisodesPage = () => {
   const [episodes, setEpisodes] = useState([]);
+  const [count, setCount] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ const EpisodesPage = () => {
         .getEpisodesData(episodes)
         .then((res) => {
           setEpisodes(res.data);
+          setCount(res.data.length);
           setIsLoading(false);
         })
         .catch((err) => {
@@ -26,7 +28,7 @@ const EpisodesPage = () => {
   return (
     <>
       {/* <Search getQuery={(q) => setQuery(q)} /> */}
-      <EpisodeGrid isLoading={isLoading} episodes={episodes} />
+      <EpisodeGrid isLoading={isLoading} episodes={episodes} count={count} />
     </>
   );
 };

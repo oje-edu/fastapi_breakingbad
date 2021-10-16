@@ -125,7 +125,7 @@ def get_episode_by_id(episode_id: int, db: Session = Depends(get_db)):
     return db_episode
 
 
-@app.get("/actors/", response_model=List[_schemas.ActorSingle], tags=["Actors"])
+@app.get("/actors/", response_model=List[_schemas.Actor], tags=["Actors"])
 def get_actors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     actors = _crud.get_actors(db, skip=skip, limit=limit)
     return actors

@@ -14,6 +14,7 @@ const ActorsPage = () => {
         .then((res) => {
           setActors(res.data);
           setIsLoading(false);
+          console.log(res.data);
         })
         .catch((err) => {
           console.log(err);

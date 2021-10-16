@@ -125,7 +125,7 @@ class Actor(_ActorBase):
     actor_id: int
     firstname: str
     lastname: str
-    # birthday: _dt.date
+    birthday: _dt.date
     image: str
     url: str
     class Config:

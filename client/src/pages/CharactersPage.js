@@ -6,6 +6,7 @@ import api from "../api";
 
 const CharactersPage = () => {
   const [characters, setCharacters] = useState([]);
+  const [count, setCount] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState("");
 
@@ -15,6 +16,7 @@ const CharactersPage = () => {
         .getCharactersData(query)
         .then((res) => {
           setCharacters(res.data);
+          setCount(res.data.length);
           setIsLoading(false);
         })
         .catch((err) => {
@@ -28,7 +30,11 @@ const CharactersPage = () => {
   return (
     <>
       <Search getQuery={(q) => setQuery(q)} />
-      <CharacterGrid isLoading={isLoading} characters={characters} />
+      <CharacterGrid
+        isLoading={isLoading}
+        characters={characters}
+        count={count}
+      />
     </>
   );
 };

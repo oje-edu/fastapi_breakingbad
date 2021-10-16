@@ -204,6 +204,10 @@ input[type="text"] {
   padding-bottom: 10px;
 }
 
+.count {
+  color: var(--green-500);
+}
+
 nav.navbar .navbar-nav {
   position: relative;
   display: flex;
@@ -242,6 +246,21 @@ a:active {
   color: var(--white);
   text-align: center;
 }
+
+button.scroll {
+  position: fixed;
+  left: 80%;
+  bottom: 50px;
+  height: 20px;
+  font-size: 3rem;
+  color: var(--green-500);
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+  z-index: 1;
+}
+
 @media (max-width: 800px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
@@ -261,21 +280,6 @@ a:active {
     padding-top: 1em;
   }
 }
-
-button.scroll {
-  position: fixed;
-  left: 80%;
-  bottom: 50px;
-  height: 20px;
-  font-size: 3rem;
-  color: var(--green-500);
-  background-color: transparent;
-  border: none;
-
-  cursor: pointer;
-  z-index: 1;
-}
-
 ::-webkit-scrollbar-thumb {
   background-image: linear-gradient(
     to right top,
