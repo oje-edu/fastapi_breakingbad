@@ -12,12 +12,18 @@ const SeasonsEpisodePage = (props) => {
     const fetchSeasonEpisodes = async () => {
       const res = await axios(
         `https://bbdevapi.oje.guru/seasons/${id}/episodes`
-      );
-      setSeasonEpisodes(res.data);
-      setIsLoading(false);
+      )
+        .then((res) => {
+          setSeasonEpisodes(res.data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
     fetchSeasonEpisodes();
   }, [id]);
+
   return (
     <>
       <EpisodeSeasonGrid
