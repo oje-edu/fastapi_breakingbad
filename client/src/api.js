@@ -1,7 +1,7 @@
 import axios from "axios";
 // Create instance called instance
 const instance = axios.create({
-  baseURL: "https://bbdevapi.oje.guru/",
+  baseURL: "https://bbdevapi.oje.guru",
   headers: {
     "content-type": "application/octet-stream",
   },

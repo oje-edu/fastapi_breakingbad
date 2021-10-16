@@ -1,25 +1,25 @@
-const ActorItem = ({ item }) => {
+const ActorItem = ({ actor }) => {
   return (
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
           {/* <h5>
-            {item.firstname} {item.lastname}
+            {actor.firstname} {actor.lastname}
           </h5> */}
-          <img src={item.image} alt="" />
+          <img src={actor.image} alt="" />
         </div>
         <div className="card-back">
           <h1>
-            {item.firstname} {item.lastname}
+            {actor.firstname} {actor.lastname}
           </h1>
           <ul>
             <li>
-              <a href={item.url} target="_blank" rel="noopener noreferrer">
+              <a href={actor.url} target="_blank" rel="noopener noreferrer">
                 Biografie
               </a>
             </li>
             <li>
-              {item.characters.map((char) => (
+              {actor.characters.map((char) => (
                 <div key={char.character_id} char={char}>
                   Charakter: {char.firstname} {char.lastname}
                 </div>

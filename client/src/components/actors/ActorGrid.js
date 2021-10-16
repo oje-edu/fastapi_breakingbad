@@ -1,13 +1,13 @@
 import ActorItem from "./ActorItem";
 import Spinner from "../ui/Spinner";
 
-const ActorGrid = ({ items, isLoading }) => {
+const ActorGrid = ({ actors, isLoading }) => {
   return isLoading ? (
     <Spinner />
   ) : (
     <section className="cards">
-      {items.map((item) => (
-        <ActorItem key={item.actor_id} item={item}></ActorItem>
+      {actors.map((actor) => (
+        <ActorItem key={actor.actor_id} actor={actor}></ActorItem>
       ))}
     </section>
   );

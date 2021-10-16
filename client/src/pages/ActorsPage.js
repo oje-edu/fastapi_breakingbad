@@ -1,32 +1,32 @@
 import { useState, useEffect } from "react";
 import ActorGrid from "../components/actors/ActorGrid";
-// import Search from "../components/ui/Search";
+
 import api from "../api";
 
 const ActorsPage = () => {
-  const [items, setItems] = useState([]);
+  const [actors, setActors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const fetchItems = async () => {
+    const fetchActors = async () => {
       api
-        .getActorsData(items)
-        .then((result) => {
-          setItems(result.data);
+        .getActorsData(actors)
+        .then((res) => {
+          setActors(res.data);
+          console.log(res.data);
           setIsLoading(false);
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
     };
 
-    fetchItems();
+    fetchActors();
   }, []);
 
   return (
     <>
-      <ActorGrid isLoading={isLoading} items={items} />
+      <ActorGrid isLoading={isLoading} actors={actors} />
     </>
   );
 };
