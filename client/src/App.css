@@ -1,3 +1,8 @@
+:root {
+  --neon-green: #3fb573;
+  --dark-green: #06202a;
+}
+
 *,
 *::before,
 *::after {
@@ -15,6 +20,36 @@ body {
 
 a {
   text-decoration: none;
+  color: var(--neon-green);
+
+  transition: 0.5s ease-in-out;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: var(--dark-green);
+  background-color: var(--neon-green);
+}
+
+.item-links {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--neon-green);
+  background-color: var(--dark-green);
+  border-radius: 0.5em;
+  margin: 0.5em auto;
+  padding: 0.25em;
+
+  transition: 0.5s ease-in-out;
+}
+
+.item-links:hover,
+.item-links:active {
+  color: var(--dark-green);
+  background-color: var(--neon-green);
 }
 
 .container {
@@ -32,7 +67,7 @@ a {
 .btn {
   display: inline-block;
   color: #fff;
-  background-color: #3fb573;
+  background-color: var(--neon-green);
   font-size: 1em;
   text-align: center;
   padding: 10px 15px;
@@ -52,13 +87,14 @@ main {
 footer {
   height: 10vh;
   width: 100%;
-  background-color: #3fb573;
+  background-color: var(--neon-green);
   color: #fff;
   text-align: center;
   padding: 10px 0;
 }
 
 header img {
+  display: flex;
   width: 200px;
 }
 
@@ -70,10 +106,18 @@ header img {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .search {
   height: 100px;
+}
+
+form {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input[type="text"] {
@@ -84,6 +128,8 @@ input[type="text"] {
   border-radius: 5px;
   width: 60%;
   margin: auto;
+
+  color: var(--neon-green);
 }
 
 .cards {
@@ -163,7 +209,11 @@ nav.navbar .navbar-nav {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(to right top, #3fb573, #06202a);
+  background: linear-gradient(
+    to right top,
+    var(--neon-green),
+    var(--dark-green)
+  );
   color: white;
   text-align: center;
 }
@@ -177,10 +227,22 @@ nav.navbar .navbar-nav {
   .cards {
     grid-template-columns: 1fr;
   }
+  header {
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+  }
+  nav.navbar .navbar-nav {
+    padding-top: 1em;
+  }
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(to right top, #06202a, #239e54);
+  background-image: linear-gradient(
+    to right top,
+    var(--dark-green),
+    var(--neon-green)
+  );
 }
 ::-webkit-scrollbar {
   width: 8px;

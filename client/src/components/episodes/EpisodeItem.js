@@ -1,18 +1,10 @@
-import { useHistory } from "react-router-dom";
-
 const EpisodeItem = ({ episode }) => {
-  let history = useHistory();
-
   return (
     <div className="card">
       <div className="card-inner">
         <div className="card-front">
           <h5>Episode {episode.episode_id}</h5>
-          <img
-            // onClick={() => history.push(`/seasons/${episode.season_id}`)}
-            src={episode.image}
-            alt=""
-          />
+          <img src={episode.image} alt="" />
         </div>
         <div className="card-back">
           <h1>{episode.title}</h1>

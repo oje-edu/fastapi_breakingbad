@@ -16,7 +16,12 @@ const SeasonItem = ({ season }) => {
               <strong>Produktionsjahr:</strong> {season.year}
             </li>
             <li>
-              <Link to={`/season/${season.season_id}/episodes`}>Episoden </Link>
+              <Link
+                className="item-links"
+                to={`/season/${season.season_id}/episodes`}
+              >
+                Episoden{" "}
+              </Link>
             </li>
           </ul>
         </div>
