@@ -1,7 +1,19 @@
 import datetime as _dt
 from typing import List, Optional
-
+from enum import auto
+from fastapi_restful.enums import StrEnum
 import pydantic as _pydantic
+
+class CharacterStatus(StrEnum):
+    lebend = auto()
+    gestorben = auto()
+    unbekannt = auto()
+
+assert CharacterStatus.lebend.name == CharacterStatus.lebend.value == "lebend"
+assert CharacterStatus.gestorben.name == CharacterStatus.gestorben.value == "gestorben"
+assert CharacterStatus.unbekannt.name == CharacterStatus.unbekannt.value == "unbekannt"
+
+
 
 
 class _EpisodeBase(_pydantic.BaseModel):

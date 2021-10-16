@@ -166,7 +166,15 @@ def get_character_by_names(firstname: Optional[str] = None, lastname: Optional[s
         raise HTTPException(status_code=404, detail="Character with this name not found")
     return db_name
 
-
+# @app.get("/character/{char_status}",tags=["Characters"])
+# def get_character_status(char_status: _schemas.CharacterStatus):
+#     if char_status == _schemas.CharacterStatus.lebend:
+#         return {"status": "lebend", "status_name": "Lebend"}
+#     if char_status == _schemas.CharacterStatus.verstorben:
+#         return {"status": "verstorben", "status_name": "Verstorben"}
+#     if char_status == _schemas.CharacterStatus.unbekannt:
+#         return {"status": "unbekannt", "status_name": "Unbekannt"}
+#     return {"status": _schemas.CharacterStatus}
 # @app.get("/jobs/", response_model=List[_schemas.CharacterJob], tags=["Characters"])
 # def get_jobs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 #     jobs = _crud.get_jobs(db, skip=skip, limit=limit)
