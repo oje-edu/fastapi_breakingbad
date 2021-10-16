@@ -1,33 +1,32 @@
 import { useState, useEffect } from "react";
 import EpisodeGrid from "../components/episodes/EpisodeGrid";
-// import Search from "../components/ui/Search";
+
 import api from "../api";
 
 const EpisodesPage = () => {
-  const [items, setItems] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const fetchItems = async () => {
+    const fetchEpisodes = async () => {
       api
-        .getEpisodesData(items)
-        .then((result) => {
-          setItems(result.data);
+        .getEpisodesData(episodes)
+        .then((res) => {
+          setEpisodes(res.data);
           setIsLoading(false);
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
     };
 
-    fetchItems();
-  }, [query]);
+    fetchEpisodes();
+  }, []);
 
   return (
     <>
       {/* <Search getQuery={(q) => setQuery(q)} /> */}
-      <EpisodeGrid isLoading={isLoading} items={items} />
+      <EpisodeGrid isLoading={isLoading} episodes={episodes} />
     </>
   );
 };
