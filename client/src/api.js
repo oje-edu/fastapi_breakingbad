@@ -20,7 +20,7 @@ export default {
   },
 
   getActorsCharsData() {
-    return axios.get(apiurl + "/actors/chars/");
+    return axios.get(apiurl + "/actors/characters/");
   },
 
   getCharactersData(query) {

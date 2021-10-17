@@ -11,7 +11,7 @@ const ActorsPage = () => {
   useEffect(() => {
     const fetchActors = async () => {
       api
-        .getActorsData(actors)
+        .getActorsCharsData(actors)
         .then((res) => {
           setActors(res.data);
           setIsLoading(false);
