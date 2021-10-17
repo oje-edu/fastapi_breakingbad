@@ -137,6 +137,8 @@ class ActorChar(_ActorBase):
     firstname: str
     lastname: str
     birthday: _dt.date
+    image: str
+    url: str
 
     characters: List[Character] = []
 
