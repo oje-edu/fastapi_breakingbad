@@ -128,6 +128,7 @@ class Actor(_ActorBase):
     birthday: _dt.date
     image: str
     url: str
+    charactor_id: int
     class Config:
         orm_mode = True
 
@@ -136,7 +137,6 @@ class ActorChar(_ActorBase):
     firstname: str
     lastname: str
     birthday: _dt.date
-    charactor_id: int
 
     characters: List[Character] = []
 
