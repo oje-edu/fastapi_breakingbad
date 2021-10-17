@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const EpisodeSeasonItem = ({ episode }) => {
+const EpisodeSeasonItem = ({ episode, seasonEpisodes }) => {
   return (
     <div className="card">
       <div className="card-inner">
@@ -8,7 +8,9 @@ const EpisodeSeasonItem = ({ episode }) => {
           <img src={episode.image} alt="" />
         </div>
         <div className="card-back">
-          <h1>{episode.title}</h1>
+          <h1>
+            Staffel {seasonEpisodes.season_id} / Episode {episode.seasonepisode}
+          </h1>
           <ul>
             <li>
               <p>

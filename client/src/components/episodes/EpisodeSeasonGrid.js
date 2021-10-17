@@ -5,14 +5,17 @@ const EpisodeSeasonGrid = ({ seasonEpisodes, isLoading }) => {
   return isLoading ? (
     <Spinner />
   ) : (
-    <section className="cards">
-      {seasonEpisodes.episodes.map((episode) => (
-        <EpisodeSeasonItem
-          key={episode.episode_id}
-          episode={episode}
-        ></EpisodeSeasonItem>
-      ))}
-    </section>
+    <>
+      <section className="cards">
+        {seasonEpisodes.episodes.map((episode) => (
+          <EpisodeSeasonItem
+            key={episode.episode_id}
+            episode={episode}
+            seasonEpisodes={seasonEpisodes}
+          ></EpisodeSeasonItem>
+        ))}
+      </section>
+    </>
   );
 };
 
