@@ -118,6 +118,20 @@ class CharacterName(_CharacterBase):
     class Config:
         orm_mode = True
 
+class CharacterStatus(_CharacterBase):
+    character_id: int
+    firstname: str
+    lastname: str
+    # actor_id: int
+    # status_id: int
+    # job_id: int
+    families: List[Family] = []
+    jobs: List[Job] = []
+    status: Optional[Status] = None
+
+    class Config:
+        orm_mode = True
+
 class _ActorBase(_pydantic.BaseModel):
     actor_id: int
 
