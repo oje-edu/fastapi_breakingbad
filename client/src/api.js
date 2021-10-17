@@ -15,6 +15,10 @@ export default {
     return axios.get(apiurl + "/episodes/");
   },
 
+  getEpisodesDataById(id) {
+    return axios.get(apiurl + "/episode/" + id);
+  },
+
   getActorsData() {
     return axios.get(apiurl + "/actors/");
   },

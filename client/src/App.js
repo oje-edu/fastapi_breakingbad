@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/ui/Header";
 
-import moment from "moment";
 import localization from "moment/locale/de";
 
 import "./App.css";
@@ -12,6 +11,7 @@ import SeasonsEpisodePage from "./pages/SeasonsEpisodePage";
 import ActorsPage from "./pages/ActorsPage";
 import Footer from "./components/ui/Footer";
 import ScrollButton from "./components/utils/ScrollButton";
+import EpisodesSinglePage from "./pages/EpisodesSinglePage";
 
 const App = () => {
   return (
@@ -27,6 +27,8 @@ const App = () => {
                 component={SeasonsEpisodePage}
               />
               <Route path="/episodes" component={EpisodesPage} />
+              <Route path="/episode/:id" component={EpisodesSinglePage} />
+              />
               <Route path="/characters" component={CharactersPage} />
               <Route path="/" component={SeasonsPage} />
             </Switch>

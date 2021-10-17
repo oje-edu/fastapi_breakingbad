@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import EpisodeSeasonGrid from "../components/episodes/EpisodeSeasonGrid";
 
-import axios from "axios";
 import api from "../api";
 
 const SeasonsEpisodePage = (props) => {

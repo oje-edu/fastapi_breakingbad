@@ -1,8 +1,6 @@
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const EpisodeSeasonItem = ({ episode }) => {
-  let history = useHistory();
-
   return (
     <div className="card">
       <div className="card-inner">
@@ -18,6 +16,14 @@ const EpisodeSeasonItem = ({ episode }) => {
                   ? episode.plot.substring(0, 250) + " ..."
                   : episode.plot}
               </p>
+              {episode.plot.length > 250 ? (
+                <Link
+                  className="item-links"
+                  to={`/episode/${episode.episode_id}`}
+                >
+                  Mehr
+                </Link>
+              ) : null}
             </li>
           </ul>
         </div>
