@@ -36,7 +36,7 @@ const ActorItem = ({ actor }) => {
             <li>
               {actor.characters.map((character) => (
                 <div key={character.character_id} character={character}>
-                  <strong>Character</strong> {character.firstname}{" "}
+                  <strong>Character:</strong> {character.firstname}{" "}
                   {character.lastname}
                 </div>
               ))}
