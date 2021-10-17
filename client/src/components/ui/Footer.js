@@ -1,9 +1,16 @@
-import React from "react";
-
+import { FaGithub } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="footer">
-      <h5>DIESE SEITE BEFINDET SICH IN DER ENTWICKLUNG!</h5>
+      <p>
+        <a
+          href="https://github.com/oje-edu/fastapi_breakingbad"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaGithub className="icon" />
+        </a>
+      </p>
     </div>
   );
 };

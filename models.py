@@ -22,6 +22,7 @@ class Episode(_database.Base):
     title = _sql.Column(_sql.String)
     plot = _sql.Column(_sql.Text)
     image = _sql.Column(_sql.String)
+    seasonepisode = _sql.Column(_sql.Integer)
 
     season_id = _sql.Column(_sql.Integer, _sql.ForeignKey("seasons.season_id"))
 
@@ -71,6 +72,7 @@ class Character(_database.Base):
     firstname = _sql.Column(_sql.String)
     lastname = _sql.Column(_sql.String)
     aliasname = _sql.Column(_sql.String)
+    info = _sql.Column(_sql.Text)
     image = _sql.Column(_sql.String)
 
     status_id=_sql.Column(_sql.Integer,_sql.ForeignKey("statuses.status_id"))

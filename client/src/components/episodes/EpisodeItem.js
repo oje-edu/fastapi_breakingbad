@@ -13,8 +13,8 @@ const EpisodeItem = ({ episode }) => {
           <ul>
             <li>
               <p>
-                {episode.plot.length > 250
-                  ? episode.plot.substring(0, 250)
+                {episode.plot.length > 150
+                  ? episode.plot.substring(0, 150) + "..."
                   : episode.plot}
               </p>
               {episode.plot.length > 250 ? (

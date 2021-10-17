@@ -24,6 +24,7 @@ class EpisodeList(_EpisodeBase):
     title: str
     plot: Optional[str] = None
     image: Optional[str] = None
+    seasonepisode: int
 
     class Config:
         orm_mode = True
@@ -92,6 +93,7 @@ class _CharacterBase(_pydantic.BaseModel):
     firstname: str
     lastname: str
     aliasname: str
+    info: Optional[str] = None
     image: Optional[str] = None
     status: Optional[Status] = None
 
