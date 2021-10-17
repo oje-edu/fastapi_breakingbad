@@ -12,6 +12,7 @@ import ActorsPage from "./pages/ActorsPage";
 import Footer from "./components/ui/Footer";
 import ScrollButton from "./components/utils/ScrollButton";
 import EpisodesSinglePage from "./pages/EpisodesSinglePage";
+import CharactersSinglePage from "./pages/CharactersSinglePage";
 
 const App = () => {
   return (
@@ -30,6 +31,9 @@ const App = () => {
               <Route path="/episode/:id" component={EpisodesSinglePage} />
               />
               <Route path="/characters" component={CharactersPage} />
+              />
+              <Route path="/characters/:id" component={CharactersSinglePage} />
+              />
               <Route path="/" component={SeasonsPage} />
             </Switch>
             <ScrollButton />

@@ -13,9 +13,6 @@ assert CharacterStatus.lebend.name == CharacterStatus.lebend.value == "lebend"
 assert CharacterStatus.gestorben.name == CharacterStatus.gestorben.value == "gestorben"
 assert CharacterStatus.unbekannt.name == CharacterStatus.unbekannt.value == "unbekannt"
 
-
-
-
 class _EpisodeBase(_pydantic.BaseModel):
     episode_id: int
 
@@ -90,18 +87,15 @@ class Job(_JobBase):
 
 class _CharacterBase(_pydantic.BaseModel):
     character_id: int
+
+class Character(_CharacterBase):
+    character_id: int
     firstname: str
     lastname: str
     aliasname: str
     info: Optional[str] = None
     image: Optional[str] = None
     status: Optional[Status] = None
-
-class Character(_CharacterBase):
-    character_id: int
-    # actor_id: int
-    # status_id: int
-    # job_id: int
     families: List[Family] = []
     jobs: List[Job] = []
 
@@ -109,11 +103,12 @@ class Character(_CharacterBase):
         orm_mode = True
 
 class CharacterName(_CharacterBase):
-    firstname: str
-    lastname: str
-    # actor_id: int
-    # status_id: int
-    # job_id: int
+    character_id: int
+    firstname: Optional[str] = None
+    lastname: Optional[str] = None
+    image: Optional[str] = None
+    info: Optional[str] = None
+    status: Optional[Status] = None
     families: List[Family] = []
     jobs: List[Job] = []
 
@@ -127,8 +122,8 @@ class CharacterStatus(_CharacterBase):
     # actor_id: int
     # status_id: int
     # job_id: int
-    families: List[Family] = []
-    jobs: List[Job] = []
+    # families: List[Family] = []
+    # jobs: List[Job] = []
     status: Optional[Status] = None
 
     class Config:
@@ -144,7 +139,6 @@ class Actor(_ActorBase):
     birthday: _dt.date
     image: str
     url: str
-    charactor_id: int
     class Config:
         orm_mode = True
 

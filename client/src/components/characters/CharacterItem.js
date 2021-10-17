@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CharacterItem = ({ character }) => {
   return (
     <div className="card">
@@ -30,6 +32,18 @@ const CharacterItem = ({ character }) => {
                   <strong>Beruf:</strong> {job.jobname}
                 </div>
               ))}
+            </li>
+            <li>
+              <p>
+                {character.info.length > 50 ? (
+                  <Link
+                    className="item-links"
+                    to={`/charaters/${character.character_id}`}
+                  >
+                    Mehr
+                  </Link>
+                ) : null}
+              </p>
             </li>
           </ul>
         </div>

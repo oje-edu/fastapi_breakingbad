@@ -17,6 +17,7 @@ const CharactersPage = () => {
         .then((res) => {
           setCharacters(res.data);
           setCount(res.data.length);
+          console.log(res.data);
           setIsLoading(false);
         })
         .catch((err) => {

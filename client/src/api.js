@@ -30,4 +30,8 @@ export default {
   getCharactersData(query) {
     return axios.get(apiurl + "/character/names/?firstname=" + query);
   },
+
+  getCharacterByIdData(id) {
+    return axios.get(apiurl + "/characters/" + id);
+  },
 };
