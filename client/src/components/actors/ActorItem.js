@@ -30,11 +30,17 @@ const ActorItem = ({ actor }) => {
                 Biografie
               </a>
             </li>
-            {actor.map((char) => (
-              <li key={char.character_id}>
-                Character {char.firstname} {char.lastname}
-              </li>
-            ))}
+            <li>
+              <hr></hr>
+            </li>
+            <li>
+              {actor.characters.map((character) => (
+                <div key={character.character_id} character={character}>
+                  <strong>Character</strong> {character.firstname}{" "}
+                  {character.lastname}
+                </div>
+              ))}
+            </li>
           </ul>
         </div>
       </div>
