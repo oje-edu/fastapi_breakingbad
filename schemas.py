@@ -106,6 +106,7 @@ class CharacterName(_CharacterBase):
     character_id: int
     firstname: Optional[str] = None
     lastname: Optional[str] = None
+    aliasname: Optional[str] = None
     image: Optional[str] = None
     info: Optional[str] = None
     status: Optional[Status] = None
