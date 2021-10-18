@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import Navigation from "./Navigation";
-import logo from "../../img/logo.png";
+import logo from "../../img/logo.webp";
 
 const Header = () => {
   let history = useHistory();

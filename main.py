@@ -5,6 +5,7 @@ from typing import List, Optional
 
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from sqlalchemy.orm import Session
 
@@ -58,37 +59,43 @@ tags_metadata = [
     },
 ]
 
-app = FastAPI(
-    title="Breaking Bad API in german Language",
-    description=description,
-    openapi_tags=tags_metadata,
-    version="0.1.0",
-    contact={
-        "name": "oje-edu",
-        "url": "https://github.com/oje-edu/fastapi_breakingbad",
-        "email": "the@noconcept.dev",
-    },
-    license_info={
-        "name": "Apache 2.0",
-        "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
-    },
-)
+def configure_static(app):  #new
+    app.mount("/static", StaticFiles(directory="static"), name="static")
 
-origins = [
-    "https://breakingbad-client.vercel.app",
-    "http://localhost",
-    "http://localhost:3000",
-    "*",
-]
+def start_application():
+    app = FastAPI(
+        title="Breaking Bad API in german Language",
+        description=description,
+        openapi_tags=tags_metadata,
+        version="0.1.0",
+        contact={
+            "name": "oje-edu",
+            "url": "https://github.com/oje-edu/fastapi_breakingbad",
+            "email": "the@noconcept.dev",
+        },
+        license_info={
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
+        },
+    )
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+    origins = [
+        "https://breakingbad-client.vercel.app",
+        "http://localhost",
+        "http://localhost:3000",
+        "*",
+    ]
 
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    return app
+
+app = start_application()
 # Dependency
 def get_db():
     db = SessionLocal()
