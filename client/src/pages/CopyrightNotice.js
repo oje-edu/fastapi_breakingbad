@@ -6,20 +6,22 @@ const CopyrightNotice = () => {
       <div className="notice-single-inner">
         <div className="card-inner">
           <div className="notice-single">
-            <h1>Entschuldigung</h1>
+            <h1>Bitte beachten</h1>
           </div>
           <p>
-            Keines dieser hier gezeigten oder von der API bereit gestellten
+            Keines dieser hier gezeigten bzw.r von der API bereit gestellten
             Bilder gehört mir, noch durfte ich in den Genuss kommen irgendwen
-            wichtiges abzulichten.
+            wichtiges abzulichten. Ich bin lediglich ein Braking Bad FAN.
           </p>
           <p>
-            Alle RECHTE der hier gezeigten Bilder unterliegen dem Photografen.
+            Alle RECHTE der hier gezeigten Bilder unterliegen dem Photografen
+            oder dessen Agentur!!.
           </p>
           <p>
-            Die Bilder wurden von mir lediglich an das WEBp-Format angepasst.
+            Die Bilder wurden von mir an das WEBp-Format angepasst. Denn was
+            wäre eine FastAPI ohne optimierte Bilder?
           </p>
-          <p>Die API sowie diese Webseite ist nich kommerziell!</p>
+          <p>Die API sowie diese Webseite sind und werden nie kommerziell!</p>
         </div>
       </div>
     </section>
