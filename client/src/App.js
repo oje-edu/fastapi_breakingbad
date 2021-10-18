@@ -32,7 +32,7 @@ const App = () => {
               />
               <Route path="/characters" component={CharactersPage} />
               />
-              <Route path="/characters/:id" component={CharactersSinglePage} />
+              <Route path="/character/:id" component={CharactersSinglePage} />
               />
               <Route path="/" component={SeasonsPage} />
             </Switch>

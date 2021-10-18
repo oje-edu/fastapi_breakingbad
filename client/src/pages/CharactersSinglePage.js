@@ -28,16 +28,38 @@ const CharactersSinglePage = (props) => {
   return isLoading ? (
     <Spinner />
   ) : (
-    <section className="episode-single-container">
-      <div className="episode-single-inner">
-        <div className="card-inner">
-          <div className="episode-single">
+    <section className="character-single-container">
+      <div className="character-single-inner">
+        <div className="character-single">
+          <div className="character-single-left">
             <img src={character.image} alt="" />
+          </div>
+          <div className="character-single-right">
             <h1>
               {character.firstname} {character.lastname}
             </h1>
             <ul>
-              <li>{character.info}</li>
+              <li>
+                <p>{character.info}</p>
+              </li>
+              <li>
+                <p>
+                  <strong>Familie/Freunde:</strong>
+                  {character?.families.map(({ family_id, family_name }) => (
+                    <div key={family_id}>{family_name}</div>
+                  ))}
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Beruf(e):</strong>
+                  {character.jobs?.map((job) => (
+                    <div key={job.job_id} job={job}>
+                      {job.jobname}
+                    </div>
+                  ))}
+                </p>
+              </li>
             </ul>
           </div>
         </div>

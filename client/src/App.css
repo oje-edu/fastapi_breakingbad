@@ -209,6 +209,17 @@ input[type="text"] {
   flex-direction: column;
 }
 
+.character-single-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.character-single {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
 .episode-single-inner {
   /* cursor: pointer; */
   background-color: transparent;
@@ -216,13 +227,43 @@ input[type="text"] {
   perspective: 1000px;
 }
 
-.episode-single-inner li {
+.character-single-inner {
+  width: 100%;
+  /* cursor: pointer; */
+  height: 100%;
+  display: flex;
+  background-color: transparent;
+  /* perspective: 1000px; */
+}
+
+.character-single-left {
+  width: 50%;
+  height: 100%;
+  background-color: transparent;
+}
+.character-single-right {
+  width: 50%;
+  height: 100%;
+  background-color: transparent;
+
+  padding: 1em;
+}
+
+.episode-single-inner,
+.character-single-inner li {
   list-style: none;
 }
 
-.episode-single-inner h1 {
+.episode-single-inner,
+.character-single-inner h1 {
   font-size: 25px;
   border-bottom: 1px var(--white) solid;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.character-single-inner p {
+  font-size: 1em;
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
@@ -230,6 +271,14 @@ input[type="text"] {
 .episode-single img {
   width: 100%;
   height: 20vw;
+  object-fit: cover;
+
+  margin: 1em auto;
+}
+
+.character-single img {
+  width: 100%;
+  height: 78vh;
   object-fit: cover;
 
   margin: 1em auto;

@@ -15,24 +15,32 @@ const CharacterItem = ({ character }) => {
               {character?.lastname}
             </li>
             <li>
-              <strong>Spitzname(n):</strong> {character.aliasname}
+              <strong>Spitzname(n):</strong> {character?.aliasname}
             </li>
             <li>
               <strong>Serien Status:</strong> {character?.status?.status_name}
             </li>
-            <li>
+            {/* <li>
               {character?.families.map(({ family_id, family_name }) => (
                 <div key={family_id}>
                   <strong>Familie/Freunde:</strong> {family_name}
                 </div>
               ))}
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               {character.jobs?.map((job) => (
                 <div key={job.job_id} job={job}>
                   <strong>Beruf:</strong> {job.jobname}
                 </div>
               ))}
+            </li> */}
+            <li>
+              <Link
+                className="item-links"
+                to={`/character/${character.character_id}`}
+              >
+                Mehr
+              </Link>
             </li>
           </ul>
         </div>
