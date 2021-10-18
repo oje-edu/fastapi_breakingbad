@@ -41,6 +41,7 @@ const CharactersSinglePage = (props) => {
             <ul>
               <li>
                 <p>{character.info}</p>
+                <p>Quelle: {character.info_url}</p>
               </li>
               <li>
                 <p>

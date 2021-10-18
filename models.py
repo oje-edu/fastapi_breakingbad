@@ -72,6 +72,7 @@ class Character(_database.Base):
     firstname = _sql.Column(_sql.String)
     lastname = _sql.Column(_sql.String)
     aliasname = _sql.Column(_sql.String)
+    info_url = _sql.Column(_sql.String)
     info = _sql.Column(_sql.Text)
     image = _sql.Column(_sql.String)
 

@@ -94,6 +94,7 @@ class Character(_CharacterBase):
     lastname: str
     aliasname: str
     info: Optional[str] = None
+    info_url: Optional[str] = None
     image: Optional[str] = None
     status: Optional[Status] = None
     families: List[Family] = []
@@ -109,6 +110,7 @@ class CharacterName(_CharacterBase):
     aliasname: Optional[str] = None
     image: Optional[str] = None
     info: Optional[str] = None
+    info_url: Optional[str] = None
     status: Optional[Status] = None
     families: List[Family] = []
     jobs: List[Job] = []
