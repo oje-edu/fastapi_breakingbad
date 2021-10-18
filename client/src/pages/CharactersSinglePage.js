@@ -6,7 +6,7 @@ import api from "../api";
 const CharactersSinglePage = (props) => {
   const [character, setCharacter] = useState([]);
   const [countJobs, setCountJobs] = useState();
-  const [countFamiliess, setCountFamilies] = useState();
+  const [countFamilies, setCountFamilies] = useState();
   const { id } = props.match.params;
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +17,7 @@ const CharactersSinglePage = (props) => {
         .then((res) => {
           setCharacter(res.data);
           setCountJobs(res.data.jobs.length);
-          setCountJobs(res.data.families.length);
+          setCountFamilies(res.data.families.length);
           setIsLoading(false);
         })
         .catch((err) => {
@@ -58,9 +58,15 @@ const CharactersSinglePage = (props) => {
               <li>
                 <p>
                   <strong>Familie/Freunde:</strong>
-                  {character?.families.map(({ family_id, family_name }) => (
-                    <div key={family_id}>
-                      {countJobs > 1 ? family_name + "," : family_name}
+                  {character?.families.map((family) => (
+                    <div
+                      key={family.family_id}
+                      family={family}
+                      countFamilies={countFamilies}
+                    >
+                      {countFamilies > 1
+                        ? family.family_name + ","
+                        : family.family_name}
                     </div>
                   ))}
                 </p>
@@ -68,7 +74,6 @@ const CharactersSinglePage = (props) => {
               <li>
                 <p>
                   <strong>Beruf(e):</strong>
-
                   {character.jobs?.map((job) => (
                     <div key={job.job_id} job={job} countJobs={countJobs}>
                       {countJobs > 1 ? job.jobname + "," : job.jobname + " "}
