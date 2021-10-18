@@ -54,6 +54,30 @@ body {
   background-color: var(--green-900);
 }
 
+a {
+  color: var(--white);
+  text-decoration: none;
+
+  transition: 0.5s ease-in-out;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: var(--green-200);
+}
+
+.info {
+  color: var(--green-200);
+
+  transition: 0.5s ease-in-out;
+}
+
+.info:hover,
+.info:active {
+  color: var(--white);
+}
+
 .container {
   position: relative;
   height: 85vh;
@@ -249,12 +273,12 @@ input[type="text"] {
   padding: 1em;
 }
 
-.episode-single-inner,
+.episode-single-inner li,
 .character-single-inner li {
   list-style: none;
 }
 
-.episode-single-inner,
+.episode-single-inner h1,
 .character-single-inner h1 {
   font-size: 25px;
   border-bottom: 1px var(--white) solid;
@@ -320,19 +344,6 @@ nav.navbar .navbar-nav {
   color: var(--white);
   font-family: "HeartBreakingBad";
   font-size: 2em;
-}
-
-a {
-  color: var(--white);
-  text-decoration: none;
-
-  transition: 0.5s ease-in-out;
-}
-
-a:hover,
-a:active {
-  text-decoration: none;
-  color: var(--green-200);
 }
 
 .footer {

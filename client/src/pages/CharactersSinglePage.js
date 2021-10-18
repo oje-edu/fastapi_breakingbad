@@ -41,7 +41,16 @@ const CharactersSinglePage = (props) => {
             <ul>
               <li>
                 <p>{character.info}</p>
-                <p>Quelle: {character.info_url}</p>
+                <p>
+                  <a
+                    className="info"
+                    href={character.info_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    © und Text-Quelle
+                  </a>
+                </p>
               </li>
               <li>
                 <p>
