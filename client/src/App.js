@@ -13,6 +13,7 @@ import Footer from "./components/ui/Footer";
 import ScrollButton from "./components/utils/ScrollButton";
 import EpisodesSinglePage from "./pages/EpisodesSinglePage";
 import CharactersSinglePage from "./pages/CharactersSinglePage";
+import CopyrightNotice from "./pages/CopyrightNotice";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
               />
               <Route path="/character/:id" component={CharactersSinglePage} />
               />
+              <Route path="/notice" component={CopyrightNotice} />
               <Route path="/" component={SeasonsPage} />
             </Switch>
             <ScrollButton />

@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
+import CopyrightNotice from "../../pages/CopyrightNotice";
 const Footer = () => {
   return (
     <div className="footer">
@@ -9,7 +11,8 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <FaGithub className="icon" />
-        </a>
+        </a>{" "}
+        | <Link to="/notice">Notiz</Link>
       </p>
     </div>
   );
