@@ -11,11 +11,12 @@ const CopyrightNotice = () => {
           <p>
             Keines dieser hier gezeigten bzw. von der API bereit gestellten
             Bilder gehört mir, noch durfte ich in den Genuss kommen irgendwen
-            wichtiges abzulichten. Ich bin lediglich ein Braking Bad FAN.
+            wichtiges abzulichten.
           </p>
+          <p> Ich bin lediglich ein Breaking Bad FAN.</p>
           <p>
-            Alle RECHTE der hier gezeigten Bilder unterliegen dem Photografen
-            oder dessen Agentur!!.
+            Alle RECHTE der hier gezeigten Bilder obliegen dem Fotografen bzw,
+            dessen Agentur!!.
           </p>
           <p>
             Die Bilder wurden von mir an das WEBp-Format angepasst. Denn was
