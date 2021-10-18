@@ -188,7 +188,7 @@ input[type="text"] {
 }
 .card-front h5 {
   position: absolute;
-  height: 1.1em;
+  height: 1vh;
   width: 100%;
   top: 50%;
   left: 50%;
@@ -197,10 +197,10 @@ input[type="text"] {
   justify-content: center;
   transform: translate(-50%, -50%);
 
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
-  color: var(--green-200);
-  background-color: rgba(6, 32, 42, 0.25);
+  color: var(--white);
+  background-color: rgba(110, 250, 110, 0.45);
 }
 
 .card img {
@@ -346,18 +346,23 @@ nav.navbar .navbar-nav {
   text-decoration: none;
 }
 .nav-link {
+  position: relative;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 0.5em;
   padding-left: 1em;
   color: var(--white);
+
   font-family: "HeartBreakingBad";
   font-size: 2em;
 }
 
 .nav-link span {
-  color: var(--green-200);
   font-family: "HeartBreakingBad";
-  font-size: 2em;
-
+  color: var(--green-500);
+  font-size: 2.5em;
   transition: 0.5s ease-in-out;
 }
 .nav-link:hover span,
@@ -377,8 +382,8 @@ nav.navbar .navbar-nav {
   align-items: center;
   justify-content: center;
   background: linear-gradient(
-    to right top,
-    var(--green-200),
+    to right bottom,
+    var(--green-500),
     var(--dark-green-900)
   );
   color: var(--white);
@@ -436,6 +441,7 @@ button.scroll {
   }
   nav.navbar .navbar-nav {
     padding-top: 1em;
+    font-size: 0.75em;
   }
   .episode-single img {
     width: 100%;

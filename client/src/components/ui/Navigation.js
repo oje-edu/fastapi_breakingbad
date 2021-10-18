@@ -5,17 +5,17 @@ const Navigation = () => {
       <ul className="navbar-nav">
         <li className="nav-item">
           <NavLink className="nav-link" to="/episodes">
-            <span>E</span>pisoden
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to="/actors">
-            <span>S</span>chauspieler
+            <span>F</span>olgen
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" to="/characters">
             <span>C</span>haraktere
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/actors">
+            <span>S</span>chauspieler
           </NavLink>
         </li>
       </ul>

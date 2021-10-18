@@ -9,7 +9,7 @@ const EpisodeSeasonItem = ({ episode, seasonEpisodes }) => {
         </div>
         <div className="card-back">
           <h1>
-            Staffel {seasonEpisodes.season_id} / Episode {episode.seasonepisode}
+            Staffel {seasonEpisodes.season_id} / Folge {episode.seasonepisode}
           </h1>
           <ul>
             <li>
