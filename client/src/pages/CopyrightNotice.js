@@ -9,7 +9,7 @@ const CopyrightNotice = () => {
             <h1>Bitte beachten</h1>
           </div>
           <p>
-            Keines dieser hier gezeigten bzw.r von der API bereit gestellten
+            Keines dieser hier gezeigten bzw. von der API bereit gestellten
             Bilder gehört mir, noch durfte ich in den Genuss kommen irgendwen
             wichtiges abzulichten. Ich bin lediglich ein Braking Bad FAN.
           </p>
