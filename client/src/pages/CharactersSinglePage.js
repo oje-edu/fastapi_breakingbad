@@ -5,6 +5,8 @@ import api from "../api";
 
 const CharactersSinglePage = (props) => {
   const [character, setCharacter] = useState([]);
+  const [countJobs, setCountJobs] = useState();
+  const [countFamiliess, setCountFamilies] = useState();
   const { id } = props.match.params;
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,7 +16,8 @@ const CharactersSinglePage = (props) => {
         .getCharacterByIdData(id)
         .then((res) => {
           setCharacter(res.data);
-          console.log(res.data);
+          setCountJobs(res.data.jobs.length);
+          setCountJobs(res.data.families.length);
           setIsLoading(false);
         })
         .catch((err) => {
@@ -56,16 +59,19 @@ const CharactersSinglePage = (props) => {
                 <p>
                   <strong>Familie/Freunde:</strong>
                   {character?.families.map(({ family_id, family_name }) => (
-                    <div key={family_id}>{family_name}</div>
+                    <div key={family_id}>
+                      {countJobs > 1 ? family_name + "," : family_name}
+                    </div>
                   ))}
                 </p>
               </li>
               <li>
                 <p>
                   <strong>Beruf(e):</strong>
+
                   {character.jobs?.map((job) => (
-                    <div key={job.job_id} job={job}>
-                      {job.jobname}
+                    <div key={job.job_id} job={job} countJobs={countJobs}>
+                      {countJobs > 1 ? job.jobname + "," : job.jobname + " "}
                     </div>
                   ))}
                 </p>
