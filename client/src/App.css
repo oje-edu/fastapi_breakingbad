@@ -159,6 +159,13 @@ input[type="text"] {
   color: var(--green-500);
 }
 
+.season-cards {
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
 .cards {
   height: 80vh;
   display: grid;
@@ -346,6 +353,20 @@ nav.navbar .navbar-nav {
   font-size: 2em;
 }
 
+.nav-link span {
+  color: var(--green-200);
+  font-family: "HeartBreakingBad";
+  font-size: 2em;
+
+  transition: 0.5s ease-in-out;
+}
+.nav-link:hover span,
+.nav-link:active span {
+  color: var(--white);
+  font-family: "HeartBreakingBad";
+  font-size: 2em;
+}
+
 .footer {
   position: fixed;
   height: 5vh;
@@ -404,7 +425,8 @@ button.scroll {
 }
 
 @media (max-width: 500px) {
-  .cards {
+  .cards,
+  .season-cards {
     grid-template-columns: 1fr;
   }
   header {
