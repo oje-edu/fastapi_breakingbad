@@ -21,25 +21,23 @@ const CharacterItem = ({ character }) => {
               <strong>Serien Status:</strong> {character?.status?.status_name}
             </li>
             {/* <li>
-              {character?.families.map(({ family_id, family_name }) => (
-                <div key={family_id}>
-                  <strong>Familie/Freunde:</strong> {family_name}
-                </div>
-              ))}
-            </li> */}
-            {/* <li>
-              {character.jobs?.map((job) => (
-                <div key={job.job_id} job={job}>
-                  <strong>Beruf:</strong> {job.jobname}
-                </div>
-              ))}
+              {character?.info.length > 10 ? (
+                <Link
+                  className="item-links"
+                  to={`/character/${character.character_id}`}
+                >
+                  Infos
+                </Link>
+              ) : (
+                <p>Keine weiteren Informationen vorhanden</p>
+              )}
             </li> */}
             <li>
               <Link
                 className="item-links"
                 to={`/character/${character.character_id}`}
               >
-                Mehr
+                Infos
               </Link>
             </li>
           </ul>
