@@ -13,16 +13,15 @@ const CopyrightNotice = () => {
             Bilder gehört mir, noch durfte ich in den Genuss kommen irgendwen
             wichtiges abzulichten.
           </p>
+          <br />
           <p> Ich bin lediglich ein Breaking Bad FAN.</p>
+          <br />
           <p>
             Alle RECHTE der hier gezeigten Bilder obliegen dem Fotografen bzw,
             dessen Agentur!!.
           </p>
-          <p>
-            Die Bilder wurden von mir an das WEBp-Format angepasst. Denn was
-            wäre eine FastAPI ohne optimierte Bilder?
-          </p>
-          <p>Die API sowie diese Webseite sind und werden nie kommerziell!</p>
+          <br />
+          <p>Die API sowie diese Webseite sind, und werden nie kommerziell!</p>
         </div>
       </div>
     </section>

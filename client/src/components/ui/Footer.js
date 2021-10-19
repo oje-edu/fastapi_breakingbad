@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaInfo } from "react-icons/fa";
+import { AiOutlineApi } from "react-icons/ai";
 import CopyrightNotice from "../../pages/CopyrightNotice";
 const Footer = () => {
   return (
@@ -11,8 +12,21 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <FaGithub className="icon" />
-        </a>{" "}
-        | <Link to="/notice">Notiz</Link>
+        </a>
+      </p>
+      <p>
+        <a
+          href="https://bbdevapi.oje.guru/docs"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <AiOutlineApi className="icon" />
+        </a>
+      </p>
+      <p>
+        <Link to="/notice">
+          <FaInfo className="icon" />
+        </Link>
       </p>
     </div>
   );

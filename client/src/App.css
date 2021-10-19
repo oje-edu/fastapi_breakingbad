@@ -315,13 +315,22 @@ input[type="text"] {
   margin: 1em auto;
 }
 
-/* TODO */
-/* .notice-single {
-  height: 40vh;
+.notice-single-inner {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.notice-single {
+  height: 35vh;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
-} */
+}
+
+.notice-single h1 {
+  border-bottom: 1px solid var(--white);
+}
 
 .card-back {
   background-color: #333;
@@ -396,6 +405,10 @@ nav.navbar .navbar-nav {
   );
   color: var(--white);
   text-align: center;
+}
+
+.footer p {
+  padding: 0 1em;
 }
 
 .icon {
@@ -484,16 +497,11 @@ button.scroll {
     font-family: "HeartBreakingBad";
     font-size: 1.5em;
   }
-
-  /* TODO */
-
-  /* .notice-single {
-    min-height: 100vh;
-    height: 40vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
+  .notice-single-inner {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 ::-webkit-scrollbar-thumb {
   background-image: linear-gradient(
