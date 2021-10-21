@@ -81,6 +81,7 @@ def start_application():
 
     origins = [
         "https://breakingbad-client.vercel.app",
+        "https://breakingbad.noconcept.dev/",
         "http://localhost",
         "http://localhost:3000",
         "*",
