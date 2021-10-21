@@ -39,18 +39,6 @@ def get_characters(db: Session, skip: int = 0, limit: int = 100):
 def get_episodes(db: Session, skip: int = 0, limit: int = 100):
     return db.query(_models.Episode).offset(skip).limit(limit).all()
 
-def get_character_status(db: Session, char_status: str):
-    query = db.query(_models.Status)
-    if char_status.lebend:
-        query = db.query(_models.Status).filter(_models.Status.status_name.contains(char_status.lebend))
-    if char_status.gestorben:
-       query = db.query(_models.Status).filter(_models.Status.status_name.contains(char_status.gestorben))
-    if char_status.unbekannt:
-       query = db.query(_models.Status).filter(_models.Status.status_name.contains(char_status.unbekannt))
-    return query.all()
-
-# def get_jobs(db: Session, skip: int = 0, limit: int = 100):
-#     return db.query(_models.Character.firstname, _models.Character.lastname, func.group_concat(_models.Job.jobname, ', ')).group_by(_models.Character.firstname,_models.Character.lastname).offset(skip).limit(limit).all()
 
 def get_families(db: Session, skip: int = 0, limit: int = 100):
     return db.query(_models.Family).offset(skip).limit(limit).all()

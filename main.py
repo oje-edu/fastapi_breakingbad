@@ -173,18 +173,6 @@ def get_character_by_names(firstname: Optional[str] = None, lastname: Optional[s
         raise HTTPException(status_code=404, detail="Character with this name not found")
     return db_name
 
-# @app.get("/character/status/", response_model=List[_schemas.Status],tags=["Characters"])
-# def get_character_status(char_status: _schemas.CharacterStatus,  db: Session = Depends(get_db)):
-#     db_status = _crud.get_character_status(db, char_status=char_status)
-#     if db_status is None:
-#         raise HTTPException(status_code=404, detail="Character with this status not found")
-#     return db_status
-
-# @app.get("/jobs/", response_model=List[_schemas.CharacterJob], tags=["Characters"])
-# def get_jobs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-#     jobs = _crud.get_jobs(db, skip=skip, limit=limit)
-#     return jobs
-
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host=os.environ.get("UV_HOST", "localhost"),  port=os.environ.get("UV_PORT", 8003),)

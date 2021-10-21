@@ -76,7 +76,7 @@ const CharactersSinglePage = (props) => {
                   <strong>Beruf(e):</strong>
                   {character.jobs?.map((job) => (
                     <div key={job.job_id} job={job} countJobs={countJobs}>
-                      {countJobs >= 1 ? job.jobname + "," : job.jobname}
+                      {countJobs.length - 1 ? job.jobname : job.jobname + ","}
                     </div>
                   ))}
                 </p>
