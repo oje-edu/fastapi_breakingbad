@@ -7,12 +7,15 @@ const Header = () => {
   return (
     <>
       <header className="center">
-        <img
+        <div className="header-link" onClick={() => history.push(`/`)}>
+          <p>1</p>
+        </div>
+        {/* <img
           className="header-link"
           onClick={() => history.push(`/`)}
           src={logo}
           alt=""
-        />
+        /> */}
         <Navigation />
       </header>
     </>

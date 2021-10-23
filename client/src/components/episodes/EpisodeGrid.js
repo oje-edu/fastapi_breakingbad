@@ -7,7 +7,7 @@ const EpisodeGrid = ({ count, episodes, isLoading }) => {
   ) : (
     <>
       <div className="count">
-        <h1>{count}Episoden</h1>
+        <h1>{count} Episoden</h1>
       </div>
       <section className="cards">
         {episodes.map((episode) => (

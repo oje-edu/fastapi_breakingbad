@@ -4,6 +4,10 @@
     format("truetype");
 }
 @font-face {
+  font-family: "BreakingBad";
+  src: url(fonts/breaking_bad/BREAKINGBAD.ttf) format("truetype");
+}
+@font-face {
   font-family: "Quicksand";
   src: url(fonts/Quicksand/Quicksand-VariableFont_wght.ttf) format("truetype");
 }
@@ -39,7 +43,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(41, 119, 62, 0.5);
+  /* color: rgba(41, 119, 62, 0.5); */
+  color: var(--white);
   background-color: var(--green-200);
   border-radius: 0.5em;
   margin: 0.5em auto;
@@ -50,7 +55,7 @@ body {
 
 .item-links:hover,
 .item-links:active {
-  color: rgba(--green-200);
+  color: var(--green-200);
   background-color: var(--green-900);
 }
 
@@ -125,8 +130,96 @@ header img {
   width: 200px;
 }
 
+header p {
+  display: flex;
+  width: 200px;
+}
+header img {
+  display: flex;
+  width: 200px;
+}
+
 .header-link {
+  font-family: "BreakingBad";
+  font-size: 5em;
+  background: linear-gradient(
+    to right,
+    var(--dark-green-700) 0%,
+    var(--green-200) 50%,
+    var(--dark-green-700) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   cursor: pointer;
+}
+
+.header-link span .text-gradient,
+.nav-link span .text-gradient {
+  font-family: "BreakingBad";
+  font-size: 2.5em;
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(
+    to right,
+    var(--dark-green-700) 0%,
+    var(--green-200) 50%,
+    var(--dark-green-700) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-link p .text-normal {
+  font-family: "Quicksand";
+}
+
+nav.navbar .navbar-nav {
+  position: relative;
+  display: flex;
+  list-style: none;
+  text-decoration: none;
+}
+.nav-link {
+  position: relative;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5em;
+  padding-left: 1em;
+  color: var(--white);
+
+  /* font-family: "HeartBreakingBad"; */
+  font-size: 2em;
+}
+
+.nav-link span {
+  font-family: "BreakingBad";
+  /* color: rgba(41, 119, 62, 0.65); */
+  font-size: 2.5em;
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(
+    to bottom right,
+    var(--dark-green-700) 0%,
+    var(--green-200) 50%,
+    var(--dark-green-700) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-link:hover span,
+.nav-link:active span {
+  /* font-family: "HeartBreakingBad"; */
+  transform: scale(0.9);
+  /* font-size: 2em; */
+  background: linear-gradient(
+    to bottom right,
+    var(--green-200) 0%,
+    var(--white) 50%,
+    var(--green-200) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .center {
@@ -200,8 +293,16 @@ input[type="text"] {
 
   font-size: 25px;
   text-align: center;
-  color: var(--white);
-  background-color: rgba(9, 48, 9, 0.45);
+  background-color: rgba(9, 48, 9, 0.62);
+  /* color: var(--white); */
+  /* background: linear-gradient(
+    to right bottom,
+    var(--green-200) 40%,
+    var(--black) 50%,
+    var(--green-200) 60%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
 
 .card img {
@@ -354,39 +455,14 @@ input[type="text"] {
   justify-content: center;
   color: var(--green-500);
   padding-bottom: 6px;
-}
-
-nav.navbar .navbar-nav {
-  position: relative;
-  display: flex;
-  list-style: none;
-  text-decoration: none;
-}
-.nav-link {
-  position: relative;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0.5em;
-  padding-left: 1em;
-  color: var(--white);
-
-  font-family: "HeartBreakingBad";
-  font-size: 2em;
-}
-
-.nav-link span {
-  font-family: "HeartBreakingBad";
-  color: rgba(41, 119, 62, 0.65);
-  font-size: 2.5em;
-  transition: 0.5s ease-in-out;
-}
-.nav-link:hover span,
-.nav-link:active span {
-  color: var(--white);
-  font-family: "HeartBreakingBad";
-  font-size: 2em;
+  background: linear-gradient(
+    to bottom right,
+    var(--dark-green-700) 0%,
+    var(--green-200) 50%,
+    var(--dark-green-700) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .footer {
