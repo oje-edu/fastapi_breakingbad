@@ -43,41 +43,49 @@ const CharactersSinglePage = (props) => {
             </h1>
             <ul>
               <li>
-                <p>{character.info}</p>
-                <p>
-                  <a
-                    className="info"
-                    href={character.info_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    © und Text-Quelle
-                  </a>
-                </p>
+                {character?.info.length > 0 && (
+                  <>
+                    <p>{character.info}</p>
+                    <p>
+                      <a
+                        className="info"
+                        href={character.info_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        © und Text-Quelle
+                      </a>
+                    </p>
+                  </>
+                )}
               </li>
               <li>
-                <p>
-                  <strong>Familie/Freunde: </strong>
-                  {families?.map((family, index) => {
-                    return (
-                      <span key={index}>
-                        {(index ? ", " : "") + family.family_name}
-                      </span>
-                    );
-                  })}
-                </p>
+                {families?.length > 0 && (
+                  <p>
+                    <strong>Familie/Freunde: </strong>
+                    {families?.map((family, index) => {
+                      return (
+                        <span key={index}>
+                          {(index ? ", " : "") + family.family_name}
+                        </span>
+                      );
+                    })}
+                  </p>
+                )}
               </li>
               <li>
-                <p>
-                  <strong>Beruf(e): </strong>
-                  {jobs?.map((job, index) => {
-                    return (
-                      <span key={index}>
-                        {(index ? ", " : "") + job.jobname}
-                      </span>
-                    );
-                  })}
-                </p>
+                {jobs?.length > 0 && (
+                  <p>
+                    <strong>Beruf(e): </strong>
+                    {jobs?.map((job, index) => {
+                      return (
+                        <span key={index}>
+                          {(index ? ", " : "") + job.jobname}
+                        </span>
+                      );
+                    })}
+                  </p>
+                )}
               </li>
             </ul>
           </div>
