@@ -5,8 +5,8 @@ import api from "../api";
 
 const CharactersSinglePage = (props) => {
   const [character, setCharacter] = useState([]);
-  const [countJobs, setCountJobs] = useState();
-  const [countFamilies, setCountFamilies] = useState();
+  const [jobs, setJobs] = useState([]);
+  const [families, setFamilies] = useState([]);
   const { id } = props.match.params;
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,8 +16,8 @@ const CharactersSinglePage = (props) => {
         .getCharacterByIdData(id)
         .then((res) => {
           setCharacter(res.data);
-          setCountJobs(res.data.jobs.length);
-          setCountFamilies(res.data.families.length);
+          setJobs(res.data.jobs);
+          setFamilies(res.data.families);
           setIsLoading(false);
         })
         .catch((err) => {
@@ -57,28 +57,26 @@ const CharactersSinglePage = (props) => {
               </li>
               <li>
                 <p>
-                  <strong>Familie/Freunde:</strong>
-                  {character?.families.map((family) => (
-                    <div
-                      key={family.family_id}
-                      family={family}
-                      countFamilies={countFamilies}
-                    >
-                      {countFamilies > 1
-                        ? family.family_name + ","
-                        : family.family_name}
-                    </div>
-                  ))}
+                  <strong>Familie/Freunde: </strong>
+                  {families?.map((family, index) => {
+                    return (
+                      <span key={index}>
+                        {(index ? ", " : "") + family.family_name}
+                      </span>
+                    );
+                  })}
                 </p>
               </li>
               <li>
                 <p>
-                  <strong>Beruf(e):</strong>
-                  {character.jobs?.map((job) => (
-                    <div key={job.job_id} job={job} countJobs={countJobs}>
-                      {countJobs.length - 1 ? job.jobname : job.jobname + ","}
-                    </div>
-                  ))}
+                  <strong>Beruf(e): </strong>
+                  {jobs?.map((job, index) => {
+                    return (
+                      <span key={index}>
+                        {(index ? ", " : "") + job.jobname}
+                      </span>
+                    );
+                  })}
                 </p>
               </li>
             </ul>
