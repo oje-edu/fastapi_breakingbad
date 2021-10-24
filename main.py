@@ -3,7 +3,7 @@ import uvicorn
 import os
 from typing import List, Optional
 
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Path
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
@@ -112,7 +112,7 @@ def get_seasons(skip: int = 0, limit: int = 5, db: Session = Depends(get_db)):
 
 
 @app.get("/seasons/{season_id}/episodes/", response_model=_schemas.Season,tags=["Seasons"])
-def get_episodes_by_season(season_id: int, db: Session = Depends(get_db)):
+def get_episodes_by_season(season_id: int = Path(...,gt=0), db: Session = Depends(get_db)):
     db_season = _crud.get_season(db, season_id=season_id)
     if db_season is None:
         raise HTTPException(status_code=404, detail="Season not found")
@@ -126,7 +126,7 @@ def get_episodes(skip: int = 0, limit: int = 62, db: Session = Depends(get_db)):
 
 
 @app.get("/episode/{episode_id}", response_model=_schemas.EpisodeList,tags=["Episodes"])
-def get_episode_by_id(episode_id: int, db: Session = Depends(get_db)):
+def get_episode_by_id(episode_id: int = Path(...,gt=0), db: Session = Depends(get_db)):
     db_episode = _crud.get_episode(db, episode_id=episode_id)
     if db_episode is None:
         raise HTTPException(status_code=404, detail="Episode not found")
@@ -140,7 +140,7 @@ def get_actors(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 
 @app.get("/actors/{actor_id}", response_model=_schemas.Actor,tags=["Actors"])
-def get_actor_by_id(actor_id: int, db: Session = Depends(get_db)):
+def get_actor_by_id(actor_id: int = Path(...,gt=0), db: Session = Depends(get_db)):
     db_actor = _crud.get_actor(db, actor_id=actor_id)
     if db_actor is None:
         raise HTTPException(status_code=404, detail="Actor not found")
@@ -160,7 +160,7 @@ def get_characters(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
 
 
 @app.get("/characters/{character_id}", response_model=_schemas.Character,tags=["Characters"])
-def get_character_by_id(character_id: int, db: Session = Depends(get_db)):
+def get_character_by_id(character_id: int = Path(...,gt=0), db: Session = Depends(get_db)):
     db_character = _crud.get_character(db, character_id=character_id)
     if db_character is None:
         raise HTTPException(status_code=404, detail="Character not found")
