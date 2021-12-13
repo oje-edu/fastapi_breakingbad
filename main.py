@@ -80,10 +80,10 @@ def start_application():
     )
 
     origins = [
-        "https://breakingbad-client.vercel.app",
-        "https://breakingbad.noconcept.dev/",
-        "http://localhost",
-        "http://localhost:3000",
+        #"https://breakingbad-client.vercel.app",
+        #"https://breakingbad.noconcept.dev",
+        #"http://localhost",
+        #"http://localhost:3000",
         "*",
     ]
 
@@ -93,6 +93,7 @@ def start_application():
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
+        max_age=3600,
     )
     return app
 
