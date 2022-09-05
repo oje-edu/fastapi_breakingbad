@@ -5,7 +5,7 @@
 _IN DEVELOPMENT_
 
 - [Backend](https://bbdevapi.oje.guru/docs) ![Backend](https://img.shields.io/website?down_color=red&down_message=offline&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fbbdevapi.oje.guru/docs)
-- [Frontend](https://breakingbad.oje.guru/) ![Frontend](https://img.shields.io/website?down_color=red&down_message=offline&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fbreakingbad.noconcept.dev)
+- [Frontend](https://breakingbad.oje.guru/) ![Frontend](https://img.shields.io/website?down_color=red&down_message=offline&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fbreakingbad.oje.guru)
 
 ## Backend Requirements
 
