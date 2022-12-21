@@ -14,7 +14,7 @@ const EpisodesSinglePage = (props) => {
         .getEpisodesDataById(id)
         .then((res) => {
           setEpisode(res.data);
-          console.log(res.data);
+          // console.log(res.data);
           setIsLoading(false);
         })
         .catch((err) => {
